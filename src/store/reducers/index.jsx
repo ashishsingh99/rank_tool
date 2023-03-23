@@ -10,8 +10,10 @@ import {
   reducerFnSix,
   reducerFnSixteen,
   reducerFnthir,
+  reducerFnthr,
   reducerFnthree,
   reducerFnTwe,
+  reducerFntwo,
 } from "./upDown";
 
 import { combineReducers } from "redux";
@@ -29,6 +31,8 @@ const RootReducer = combineReducers({
   previousallolddata: reducerFnTwe, // Previous All OLD data from DB oldData APi
   oldkeyworddata: reducerFnthir, // Last Day OLD Data
   userallprojectname:reducerFnOne,  //User All Project NAME ONLY from DB Project Api
+  userkeywordlimit:reducerFntwo, // user subscribe limit of keyword
+  userprojectlimit:reducerFnthr // user subscribe limit of Project
 
 });
 export default RootReducer;

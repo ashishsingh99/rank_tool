@@ -68,6 +68,18 @@ export const reducerFnOne = (state = false, action) => {
     else { return state; }
 }
 
+export const reducerFntwo = (state = false, action) => {
+    if (action.type === 'USERKEYWORDLIMIT') { return state = action.payload }
+    else { return state; }
+}
+
+export const reducerFnthr = (state = false, action) => {
+    if (action.type === 'USERPROJECTLIMIT') { return state = action.payload }
+    else { return state; }
+}
+
+
+
 
 
 

@@ -30,10 +30,11 @@ const Login = () => {
             .then(res => {
                 // console.log(res.data)
                 setMydata(res.data);
+
                 localStorage.setItem('token', res.data.token.access);
-                localStorage.setItem('status', res.data.status);
                 localStorage.setItem('email', res.data.email);
-                const status = localStorage.getItem('status')
+
+                const status = res.data.status
                 if (status === '200') {
                     const loginOut = true;
                     localStorage.setItem('loginOut', loginOut)
@@ -69,7 +70,7 @@ const Login = () => {
                         <div className='col-6'>
                             <div className='lg-ri-div'>
                                 <form>
-                                    <div className='lg-ri-fm'>
+                                    <div className='lg-ri-fm '>
                                         <h3 className='text-center'>LOGIN</h3>
                                         <div className='lg-sn-op'>
                                             <ul>

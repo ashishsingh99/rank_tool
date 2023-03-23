@@ -66,7 +66,7 @@ const Upgrade = () => {
                                             <li> <i className="fa-solid fa-check"></i> 2 users</li>
                                             <li className='see_more' onClick={showDetails}>See More</li>
                                         </ul>
-                                        <a href={planType === 'month' ? 'https://buy.stripe.com/test_3cs15adFFd11gdWcMR' : 'https://buy.stripe.com/test_00g8xCeJJgddbXG9AG'}>   <button className='upgrade-button' >Start Free Trial</button> </a>
+                                        <a href={planType === 'month' ? 'https://buy.stripe.com/test_fZe4iTdbp2kzanm288' : 'https://buy.stripe.com/test_fZe4iTdbp2kzanm288'}>   <button className='upgrade-button' >Start Free Trial</button> </a>
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +88,7 @@ const Upgrade = () => {
                                             <li className='see_more' onClick={showDetails}>See More</li>
 
                                         </ul>
-                                        <a href={planType === 'month' ? 'https://buy.stripe.com/test_3csdRW6ddf999Py28b' : 'https://buy.stripe.com/test_6oE6pu9pp1ij9PyaEI'}>   <button className='upgrade-button' >Start Free Trial</button></a>
+                                        <a href={planType === 'month' ? 'https://buy.stripe.com/test_fZe4iTdbp2kzanm288' : 'https://buy.stripe.com/test_fZe4iTdbp2kzanm288'}>   <button className='upgrade-button' >Start Free Trial</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +110,7 @@ const Upgrade = () => {
                                             <li className='see_more' onClick={showDetails}>See More</li>
 
                                         </ul>
-                                        <a href={planType === 'month' ? 'https://buy.stripe.com/test_00gdRW1WXbWX4ve7sz' : 'https://buy.stripe.com/test_eVa15a1WXf99aTCeV2'}>     <button className='upgrade-button' >Start Free Trial</button> </a>
+                                        <a href={planType === 'month' ? 'https://buy.stripe.com/test_fZe4iTdbp2kzanm288' : 'https://buy.stripe.com/test_fZe4iTdbp2kzanm288'}>     <button className='upgrade-button' >Start Free Trial</button> </a>
                                     </div>
                                 </div>
                             </div>

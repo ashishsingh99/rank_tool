@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import RippleButton from "../../share/components/rippleButton";
 
 export const AddWebsite = () => {
@@ -26,8 +26,8 @@ export const AddWebsite = () => {
             setValida('please provide all the details');
         }
         else {
-            localStorage.setItem('websitename', websiteName)
-            localStorage.setItem('websiteurl', websiteURL)
+            localStorage.setItem('websitename', websiteName);
+            localStorage.setItem('newprojecturl', websiteURL)
             // console.log('websiteURL', websiteURL)
             // console.log('websiteName', websiteName)
             navigate('addcountry')
@@ -54,7 +54,7 @@ export const AddWebsite = () => {
                             {valida ? <p className="vl-msd-line mt-0 text-right">{valida}</p> : false}
                         </div>
                         <div className='add-pr-btn'>
-                            <button className='cm-btn-b'  >Back</button>
+                        <Link to={-1}>  <button className='cm-btn-b'  >Back</button> </Link>
                             <RippleButton className='cm-btn' type='submit' onClick={Addwebsite}>Next</RippleButton>
                         </div>
                     </div>

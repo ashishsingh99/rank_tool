@@ -29,7 +29,7 @@ const Forgot = () => {
         const Url = document.URL;
         setVarifybymail(varifyMail);
 
-        if (Url === 'http://localhost:3000/api/user/reset/' + UID + '/' + UToken || Url === 'http://' + baseUrlPath + ':8000/api/user/reset/' + UID + '/' + UToken) {
+        if (Url === 'http://localhost:3000/api/user/reset/' + UID + '/' + UToken || Url === 'https://' + baseUrlPath + '/api/user/reset/' + UID + '/' + UToken) {
             localStorage.setItem('varifybymail', true)
         }
     })

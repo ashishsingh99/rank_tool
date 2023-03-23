@@ -40,13 +40,13 @@ const AutoSearch = () => {
     }
 
     const SearchedSubmit = (e) => {
-        if (searched !== []) {
+        if (searched.length !== 0 && searched[0] !=='undefined') {
             // e.preventDefault()
             localStorage.setItem('websiteurl', searched[0]);
         }
     }
     const SelectedLI = (res) => {
-        localStorage.setItem('websiteurl', res);
+        // localStorage.setItem('websiteurl', res);
         window.location.reload(false);
     }
     return (

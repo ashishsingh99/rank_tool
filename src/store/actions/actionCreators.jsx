@@ -64,6 +64,14 @@ export const GetPreviousAlloldData = (previousallolddata) => {
   return { type: "PREVIOUSALLOLDDATA", payload: previousallolddata };
 };
 
-// export const UserAllProjectsKeywords = (userallprojectskeywords) => {
-//   return { type: "USERALLPROJECTSKEYWORDS", payload: userallprojectskeywords };
-// };
+
+
+export const UserKeywordLimit = (userkeywordlimit) => {
+  return { type: "USERKEYWORDLIMIT", payload: userkeywordlimit };
+};
+
+export const UserProjectLimit = (userprojectlimit) => {
+  return { type: "USERPROJECTLIMIT", payload: userprojectlimit };
+};
+
+

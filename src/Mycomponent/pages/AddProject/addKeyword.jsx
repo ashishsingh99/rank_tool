@@ -4,15 +4,16 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useRef } from "react";
+import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { KEYWORD_POST, PROJECT_POST } from "../../../services/constants";
 import Keygatter from "./keygatter";
 
 export const AddKeyword = () => {
-    const userKeywordlimit = localStorage.getItem('userKeywordlimit')
+    const userKeywordlimit = useSelector(state=>state.userkeywordlimit)
 
     // getting  local storage data
-    const websiteUrl = localStorage.getItem('websiteurl')
+    const websiteUrl = localStorage.getItem('newprojecturl')
     const email = localStorage.getItem('email')
     const locationcode = localStorage.getItem('locationcode')
 

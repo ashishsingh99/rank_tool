@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { ADMIN_USERS } from '../../services/constants';
+import { ADMIN_USERS, delete_User } from '../../services/constants';
 
 const User = () => {
     const [Users, setUsers] = useState([0]);
@@ -8,7 +8,7 @@ const User = () => {
     const [ShowAlert, setShowAlert] = useState(false);
 
     const deleteUser = () => {
-        axios.delete('https://eslrankspro.com/api/user/deleteuser/' + UserId + '/')
+        axios.delete(delete_User(UserId  ))
             .then(() => {
                 setShowAlert(false)
                 setUserId(null)
