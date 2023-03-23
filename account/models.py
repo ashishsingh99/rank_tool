@@ -74,8 +74,9 @@ class OTP(models.Model):
       unique=True,
   )
 
-# class Finding(models.Model):
-#     finding = models.SlugField(max_length=5000000)
-
-# class MultiPr(models.Model):
-#     multipr = models.SlugField(max_length=5000000)
+class Plan(models.Model):
+    price = models.SlugField(max_length=10)
+    prod_id = models.SlugField(max_length=256)
+    payment_link = models.URLField()
+    name = models.CharField(max_length=256)
+    validity = models.CharField(max_length=256)

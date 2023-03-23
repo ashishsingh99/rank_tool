@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from account.models import User, Keyword, OTP, Project
+from account.models import User, Keyword, OTP, Project, Plan
 from django.utils.encoding import smart_str, force_bytes, DjangoUnicodeDecodeError
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
@@ -68,6 +68,21 @@ class UserProfileSerializer(serializers.ModelSerializer):
   class Meta:
     model = User
     fields = ['id', 'email', 'name']
+
+class PlanSerializer(serializers.ModelSerializer):
+  price = serializers.JSONField()
+  prod_id = serializers.JSONField()
+  payment_link = serializers.URLField()
+  name = serializers.CharField(max_length=256)
+  validity = serializers.CharField(max_length=256)
+  class Meta:
+    model = Plan
+    fields = ['price', 'prod_id', 'payment_link', 'name', 'validity']
+
+class PlanGetSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Plan
+    fields = '__all__'
 
 class UserChangePasswordSerializer(serializers.Serializer):
   password = serializers.CharField(max_length=255, style={'input_type':'password'}, write_only=True)

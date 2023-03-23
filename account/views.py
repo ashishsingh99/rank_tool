@@ -1,13 +1,13 @@
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
-from account.serializers import SendPasswordResetEmailSerializer,ProjectSerializer,ProjectGetSerializer,KeywordGetSerializer,otpSerializer,KeywordSerializer, UserChangePasswordSerializer, UserLoginSerializer, UserPasswordResetSerializer, UserProfileSerializer, UserRegistrationSerializer
+from account.serializers import SendPasswordResetEmailSerializer,PlanGetSerializer,PlanSerializer,ProjectSerializer,ProjectGetSerializer,KeywordGetSerializer,otpSerializer,KeywordSerializer, UserChangePasswordSerializer, UserLoginSerializer, UserPasswordResetSerializer, UserProfileSerializer, UserRegistrationSerializer
 from django.contrib.auth import authenticate
 from account.renderers import UserRenderer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
 from django.middleware.csrf import get_token
-from .models import Keyword, User, Project
+from .models import Keyword, User, Project, Plan
 import ast
 from .client import RestClient
 from pymongo import MongoClient
@@ -176,6 +176,53 @@ class NewDataView(APIView):
       results.append(x)
     return Response({"status": "success", "data": results}, status=status.HTTP_200_OK)
 
+class PlanView(APIView):
+  def post(self, request):
+    serializer = PlanSerializer(data=request.data)
+    if serializer.is_valid():
+      serializer.save()
+      return Response({'msg':'Plan Saved Successful', 'data':serializer.data}, status=status.HTTP_201_CREATED)
+    else:
+      return Response({'msg':'Invalid'}, status=status.HTTP_400_BAD_REQUEST)
+
+class PlanGetView(APIView):
+  def get(self,request):
+    planData = []
+    plan = Plan.objects.all()
+    serializer = PlanGetSerializer(plan, many=True)
+    for data in serializer.data:
+      plans = dict(data)
+      planData.append(plans)
+    return Response({"status": "success", "data": planData}, status=status.HTTP_200_OK)
+
+class PlanUpdateView(APIView):
+  def put(self,request, id):
+    update = dict()
+    plan = Plan.objects.get(id=id)
+    plan.price = request.data.get('price')
+    plan.prod_id = request.data.get('prod_id')
+    plan.payment_link = request.data.get('payment_link')
+    plan.name = request.data.get('name')
+    plan.validity = request.data.get('validity')
+    plan.save()
+    update['price'] = plan.price
+    update['prod_id'] = plan.prod_id
+    update['payment_link'] = plan.payment_link
+    update['name'] = plan.name
+    update['validity'] = plan.validity
+    serializer = PlanSerializer(data = update)
+    if serializer.is_valid():
+      serializer.update(plan, update)
+      return Response({'msg':'Plan Saved Successful', 'data':serializer.data}, status=status.HTTP_201_CREATED)
+    else:
+      return Response({'msg':'Invalid'}, status=status.HTTP_400_BAD_REQUEST)
+
+class PlanDeleteView(APIView):
+  def delete(self, request,id):
+    Plan_detials = Plan.objects.get(id=id)
+    Plan_detials.delete()
+    return Response("deleted successfully")
+
 class UserChangePasswordView(APIView):
   renderer_classes = [UserRenderer]
   permission_classes = [IsAuthenticated]
@@ -197,7 +244,7 @@ class SendPasswordResetEmailView(APIView):
       print('Encoded UID', uid)
       token = PasswordResetTokenGenerator().make_token(user)
       print('Password Reset Token', token)
-      link = 'http://eslrankspro.com/api/user/reset/'+uid+'/'+token
+      link = 'https://eslrankspro.com/api/user/reset/'+uid+'/'+token
       print('Password Reset Link', link)
       # Send EMail
       body = "We heard that you lost your password. Sorry about that! But don't worry! You can use the following link to reset your password: "+link
