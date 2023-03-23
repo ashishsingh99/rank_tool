@@ -22,7 +22,7 @@ user = 'info@esearchlogix.com'
 password = 'ff9fb26846a160db'
 
 
-mongo_client=MongoClient("mongodb+srv://ashish1908:Ashish%401908@cluster0.v5edrbu.mongodb.net/?retryWrites=true&w=majority")
+mongo_client=MongoClient("mongodb+srv://Alekh:Rank%402022%23@eslrankspro.6ziuz.mongodb.net/?retryWrites=true&w=majority")
 db=mongo_client.Latest_Data
 db2=mongo_client.Previous_Data
 db3=mongo_client.seo_newest
