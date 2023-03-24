@@ -89,6 +89,6 @@ def get(id=None, format=None):
 
 def start():
   scheduler = BackgroundScheduler()
-  scheduler.add_job(get, trigger='cron', hour='4')
+  scheduler.add_job(get, trigger='cron', hour='5')
   scheduler.start()
   print("Scheduler started...")
