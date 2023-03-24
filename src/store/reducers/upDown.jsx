@@ -26,7 +26,10 @@ export const reducerFnthir = (state = 0, action) => {
     else { return state; }
 }
 
-
+export const reducerPlansdetails = (state=false, action)=>{
+    if (action.type === 'PLANSDETAILS') { return state = action.payload }
+    else { return state; }
+}
 
 
 /////////////////////

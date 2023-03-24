@@ -14,6 +14,7 @@ import {
   reducerFnthree,
   reducerFnTwe,
   reducerFntwo,
+  reducerPlansdetails,
 } from "./upDown";
 
 import { combineReducers } from "redux";
@@ -30,9 +31,9 @@ const RootReducer = combineReducers({
   userallpendingresult: reducerFnFIV, // User All Pending Keyword && Data
   previousallolddata: reducerFnTwe, // Previous All OLD data from DB oldData APi
   oldkeyworddata: reducerFnthir, // Last Day OLD Data
-  userallprojectname:reducerFnOne,  //User All Project NAME ONLY from DB Project Api
-  userkeywordlimit:reducerFntwo, // user subscribe limit of keyword
-  userprojectlimit:reducerFnthr // user subscribe limit of Project
-
+  userallprojectname: reducerFnOne,  //User All Project NAME ONLY from DB Project Api
+  userkeywordlimit: reducerFntwo, // user subscribe limit of keyword
+  userprojectlimit: reducerFnthr, // user subscribe limit of Project
+  plansdetails: reducerPlansdetails, // upgrade plans
 });
 export default RootReducer;

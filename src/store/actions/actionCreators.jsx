@@ -74,4 +74,7 @@ export const UserProjectLimit = (userprojectlimit) => {
   return { type: "USERPROJECTLIMIT", payload: userprojectlimit };
 };
 
+export const UpgradePlansDetails = (plandetails)=>{
+  return { type: "PLANSDETAILS", payload: plandetails };
+}
 

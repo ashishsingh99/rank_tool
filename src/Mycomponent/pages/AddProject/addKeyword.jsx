@@ -10,7 +10,7 @@ import { KEYWORD_POST, PROJECT_POST } from "../../../services/constants";
 import Keygatter from "./keygatter";
 
 export const AddKeyword = () => {
-    const userKeywordlimit = useSelector(state=>state.userkeywordlimit)
+    const userKeywordlimit = useSelector(state => state.userkeywordlimit)
 
     // getting  local storage data
     const websiteUrl = localStorage.getItem('newprojecturl')
@@ -31,8 +31,13 @@ export const AddKeyword = () => {
     const mobile = useRef(null);
     const deviceType = useRef([]);
     const messagesEndRef = useRef(null);
+    const cur_Project_Keydswords_len = localStorage.getItem('cur_Project_Keydswords_len')
+
+
+    // state manage
     // navigator
     const navigate = useNavigate();
+
 
     // useeffect to auto run the function
     useEffect(() => {
@@ -75,7 +80,7 @@ export const AddKeyword = () => {
             localStorage.removeItem('filtered')
         }
 
-        else if (item.length * deviceType.current.length > Number(userKeywordlimit - 1)) {
+        else if (item.length * deviceType.current.length + Number(cur_Project_Keydswords_len) >= Number(userKeywordlimit)) {
             setItemAlert(true)
         }
 
@@ -102,7 +107,7 @@ export const AddKeyword = () => {
         else if (item.length === 0) {
             setMinLengthAlert(true)
         }
-        else if (item.length * deviceType.current.length > Number(userKeywordlimit)) {
+        else if (item.length * deviceType.current.length + Number(cur_Project_Keydswords_len) > Number(userKeywordlimit)) {
             setItemAlert(true)
         }
         else {
@@ -199,7 +204,7 @@ export const AddKeyword = () => {
                             </label>
                         </div>
                         <div>
-                            keyword :  {deviceType.current.length !== 0 ? item.length * deviceType.current.length : item.length}
+                            keyword :  {deviceType.current.length !== 0 ? item.length * deviceType.current.length + Number(cur_Project_Keydswords_len) : item.length + Number(cur_Project_Keydswords_len)}
                         </div>
 
                     </div>
@@ -239,6 +244,9 @@ export const AddKeyword = () => {
                     </form>
                 </div>
             </div>
+
+
+
         </div>
     </>
 }

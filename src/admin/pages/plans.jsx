@@ -17,6 +17,8 @@ const Plans = () => {
     const [name, setName] = useState('individual')
     const [productId, setProductId] = useState(null)
     const [link, setLink] = useState(null)
+    const [projlmt, setProjLmt] = useState(0)
+    const [keyLmt, setKeyLmt] = useState(0)
     const [validityFor, setValidityFor] = useState('month')
 
     useEffect(() => {
@@ -25,7 +27,7 @@ const Plans = () => {
                 console.log('res get', res.data.data)
                 setPlanDetails(res.data.data)
             })
-    }, [deleteAlert, ShowAlert, planId,updateAlert])
+    }, [deleteAlert, ShowAlert, planId, updateAlert])
 
 
     const AddPlan = () => {
@@ -52,7 +54,9 @@ const Plans = () => {
             prod_id: productId,
             payment_link: link,
             name: name,
-            validity: validityFor
+            validity: validityFor,
+            proj_len: projlmt,
+            keyword_len: keyLmt
         }
 
         if (ShowAlert === true) {
@@ -86,6 +90,9 @@ const Plans = () => {
                             <th scope="col" >Name</th>
                             <th scope="col">Price </th>
                             <th scope="col">Product Id </th>
+                            <th scope="col">Project lgth </th>
+                            <th scope="col">Keyword lgth </th>
+
                             <th scope="col">Payment Link </th>
                             <th scope="col">Validity </th>
                             <th scope="col"> </th>
@@ -98,7 +105,9 @@ const Plans = () => {
                                     <td>{plan.name}</td>
                                     <td>{plan.price}</td>
                                     <td>{plan.prod_id}</td>
-                                    <td>{plan.payment_link}</td>
+                                    <td>{plan.proj_len}</td>
+                                    <td>{plan.keyword_len}</td>
+                                    <td className="tb-link-lmt">{plan.payment_link}</td>
                                     <td>{plan.validity}</td>
                                     <td className='table-edit'><span onClick={() => UpdateAlert(plan.id)}> <i className='fa-solid fa-edit'></i> </span> <span onClick={() => DeleteAlert(plan.id)}><i className=" fa-solid fa-trash"></i></span> </td>
                                 </tr>
@@ -142,7 +151,16 @@ const Plans = () => {
                                 <label id='lb'>Product Id</label>
                                 <input type='url' placeholder='https://Payment Link ' onChange={(e) => setLink(e.target.value)} ></input>
                                 <label id='lb'>Link</label>
-
+                                <div className='row'>
+                                    <div className="col-6">
+                                        <input type='number' placeholder='project limit ' onChange={(e) => setProjLmt(e.target.value)} ></input>
+                                        <label id='lb'>Project Lmt </label>
+                                    </div>
+                                    <div className="col-6">
+                                        <input type='number' placeholder='keyword limit ' onChange={(e) => setKeyLmt(e.target.value)} ></input>
+                                        <label id='lb'>Keyword Lmt</label>
+                                    </div>
+                                </div>
                                 <div className='pop-select'>
                                     <select onChange={(e) => setName(e.target.value)}>
                                         <option value='individual'>Individual</option>
@@ -190,6 +208,16 @@ const Plans = () => {
                                 <label id='lb'>Product Id</label>
                                 <input type='url' placeholder='https://Payment Link ' onChange={(e) => setLink(e.target.value)} ></input>
                                 <label id='lb'>Link</label>
+                                <div className='row'>
+                                    <div className="col-6">
+                                        <input type='number' placeholder='project limit ' onChange={(e) => setProjLmt(e.target.value)} ></input>
+                                        <label id='lb'>Project Lmt </label>
+                                    </div>
+                                    <div className="col-6">
+                                        <input type='number' placeholder='keyword limit ' onChange={(e) => setKeyLmt(e.target.value)} ></input>
+                                        <label id='lb'>Keyword Lmt</label>
+                                    </div>
+                                </div>
 
                                 <div className='pop-select'>
                                     <select onChange={(e) => setName(e.target.value)}>

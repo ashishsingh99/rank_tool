@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
 import PlLogin from './login/plLogin'
 import '../css/upgrade.css';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useRef } from 'react';
 const Upgrade = () => {
     const [show, setShow] = useState(false);
     const [planType, setplanType] = useState('month')
+    const plansDetails = useSelector(state => state.plansdetails)
+    const [filteredPlansShow, setFilteredPlansShow] = useState([]);
     const showDetails = () => {
         if (show === false) {
             setShow(true)
@@ -14,20 +19,33 @@ const Upgrade = () => {
     }
     const ChangeMonthType = () => {
         setplanType('month')
+
     }
     const ChangeAnnualType = () => {
-        setplanType('annual')
+        setplanType('yearly')
     }
+
+    useEffect(() => {
+        // filteredPlansShow.current = []
+        setFilteredPlansShow([]);
+        plansDetails && plansDetails.filter((plan) => {
+            if (planType === plan.validity) {
+                // filteredPlansShow.current.push(plan)
+                setFilteredPlansShow(res => {
+                    return [...res, plan]
+                })
+                // console.log('plantype based details', filteredPlansShow.current)
+                console.log('plantype based details', filteredPlansShow)
+
+            }
+        })
+    }, [plansDetails, planType])
 
     const loginOut = localStorage.getItem('loginOut')
     if (loginOut === 'true') {
         return (
             <>
-
-
                 <div className='cmd-b'>
-
-
                     <div className='w-100'>
                         <div className="cmc mb-3">
                             <div>
@@ -40,7 +58,7 @@ const Upgrade = () => {
                                 </button>
                                 <button
                                     style={{ borderRadius: "0px" }}
-                                    className={planType === "annual" ? "cm-btn" : "cm-btn-b"}
+                                    className={planType === "yearly" ? "cm-btn" : "cm-btn-b"}
                                     onClick={ChangeAnnualType}
                                 >
 
@@ -52,65 +70,65 @@ const Upgrade = () => {
                         <div className='row'>
                             <div className='col-4'>
                                 <div className='upgrade-card '>
-                                    <h3 >Business</h3>
-                                    <p>2-5 websites</p>
-                                    <h4>$20</h4>
+                                    <h3 style={{ textTransform: "capitalize" }}>{filteredPlansShow.length !== 0 ? filteredPlansShow[1].name : ''}</h3>
+                                    <p>{filteredPlansShow.length !== 0 ? filteredPlansShow[1].proj_len : ''}-websites </p>
+                                    <h4>${filteredPlansShow.length !== 0 ? filteredPlansShow[1].price : ''}</h4>
                                     <p className='usd-p'>USD/month</p>
                                     <div className='up-cont'>
                                         <ul>
                                             <li> <i className="fa-solid fa-check"></i> 300 searches / day</li>
                                             <li> <i className="fa-solid fa-check"></i> 7 domains</li>
-                                            <li> <i className="fa-solid fa-check"></i> 150 tracked keywords / domain</li>
+                                            <li> <i className="fa-solid fa-check"></i> {filteredPlansShow.length !== 0 ? filteredPlansShow[1].keyword_len : ''} tracked keywords / domain</li>
                                             <li> <i className="fa-solid fa-check"></i> 10 competitors / domain</li>
                                             <li> <i className="fa-solid fa-check"></i> 5,000 page scans / domain</li>
                                             <li> <i className="fa-solid fa-check"></i> 2 users</li>
                                             <li className='see_more' onClick={showDetails}>See More</li>
                                         </ul>
-                                        <a href={planType === 'month' ? 'https://buy.stripe.com/test_fZe4iTdbp2kzanm288' : 'https://buy.stripe.com/test_fZe4iTdbp2kzanm288'}>   <button className='upgrade-button' >Start Free Trial</button> </a>
+                                        <a href={filteredPlansShow.length !== 0 ? filteredPlansShow[1].payment_link : null}>   <button className='upgrade-button' >Start Free Trial</button> </a>
                                     </div>
                                 </div>
                             </div>
 
                             <div className='col-4'>
                                 <div className='upgrade-card up-ca-active'>
-                                    <h3 >Individual</h3>
-                                    <p>1 websites</p>
-                                    <h4>$12</h4>
+                                    <h3 style={{ textTransform: "capitalize" }}>{filteredPlansShow.length !== 0 ? filteredPlansShow[0].name : ''}</h3>
+                                    <p>{filteredPlansShow.length !== 0 ? filteredPlansShow[0].proj_len : ''}-websites </p>
+                                    <h4>${filteredPlansShow.length !== 0 ? filteredPlansShow[0].price : ''}</h4>
                                     <p className='usd-p'>USD/month</p>
                                     <div className='up-cont'>
                                         <ul>
                                             <li> <i className="fa-solid fa-check"></i> 150 searches / day</li>
                                             <li> <i className="fa-solid fa-check"></i> 1 domains</li>
-                                            <li> <i className="fa-solid fa-check"></i> 125 tracked keywords / domain</li>
+                                            <li> <i className="fa-solid fa-check"></i> {filteredPlansShow.length !== 0 ? filteredPlansShow[0].keyword_len : ''} tracked keywords / domain</li>
                                             <li> <i className="fa-solid fa-check"></i> 5 competitors / domain</li>
                                             <li> <i className="fa-solid fa-check"></i> 1,000 page scans / domain</li>
                                             <li> <i className="fa-solid fa-check"></i> 1 users</li>
                                             <li className='see_more' onClick={showDetails}>See More</li>
 
                                         </ul>
-                                        <a href={planType === 'month' ? 'https://buy.stripe.com/test_fZe4iTdbp2kzanm288' : 'https://buy.stripe.com/test_fZe4iTdbp2kzanm288'}>   <button className='upgrade-button' >Start Free Trial</button></a>
+                                        <a href={filteredPlansShow.length !== 0 ? filteredPlansShow[0].payment_link : null}>    <button className='upgrade-button' >Start Free Trial</button></a>
                                     </div>
                                 </div>
                             </div>
 
                             <div className='col-4'>
                                 <div className='upgrade-card '>
-                                    <h3 >Enterprice</h3>
-                                    <p>2-5 websites</p>
-                                    <h4>$40</h4>
+                                    <h3 style={{ textTransform: "capitalize" }}>{filteredPlansShow.length !== 0 ? filteredPlansShow[2].name : ''}</h3>
+                                    <p>{filteredPlansShow.length !== 0 ? filteredPlansShow[2].proj_len : ''}-websites </p>
+                                    <h4>${filteredPlansShow.length !== 0 ? filteredPlansShow[2].price : ''}</h4>
                                     <p className='usd-p'>USD/month</p>
                                     <div className='up-cont'>
                                         <ul>
                                             <li> <i className="fa-solid fa-check"></i> 900 searches / day</li>
                                             <li> <i className="fa-solid fa-check"></i> 15 domains</li>
-                                            <li> <i className="fa-solid fa-check"></i> 200 tracked keywords / domain</li>
+                                            <li> <i className="fa-solid fa-check"></i> {filteredPlansShow.length !== 0 ? filteredPlansShow[2].keyword_len : ''} tracked keywords / domain</li>
                                             <li> <i className="fa-solid fa-check"></i> 15 competitors / domain</li>
                                             <li> <i className="fa-solid fa-check"></i> 10,000 page scans / domain</li>
                                             <li> <i className="fa-solid fa-check"></i> 5 users</li>
                                             <li className='see_more' onClick={showDetails}>See More</li>
 
                                         </ul>
-                                        <a href={planType === 'month' ? 'https://buy.stripe.com/test_fZe4iTdbp2kzanm288' : 'https://buy.stripe.com/test_fZe4iTdbp2kzanm288'}>     <button className='upgrade-button' >Start Free Trial</button> </a>
+                                        <a href={filteredPlansShow.length !== 0 ? filteredPlansShow[2].payment_link : null}>      <button className='upgrade-button' >Start Free Trial</button> </a>
                                     </div>
                                 </div>
                             </div>

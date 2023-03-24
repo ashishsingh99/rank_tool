@@ -1,5 +1,7 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import RippleButton from "../../share/components/rippleButton";
 
@@ -10,8 +12,19 @@ export const AddWebsite = () => {
     const [websiteName, setWebsiteName] = useState('');
     const [valida, setValida] = useState('');
 
+    const userProjectlimit = useSelector(state => state.userprojectlimit)
+    const USERALLPROJECTNAME = localStorage.getItem('projectlimit')
+    const [ShowAlert, setShowAlert] = useState(false)
 
-
+    // authentication lmt for customer Project
+    useEffect(() => {
+        if (USERALLPROJECTNAME >= userProjectlimit) {
+            setShowAlert(true)
+        }
+        else {
+            setShowAlert(false)
+        }
+    })
 
 
 
@@ -54,13 +67,24 @@ export const AddWebsite = () => {
                             {valida ? <p className="vl-msd-line mt-0 text-right">{valida}</p> : false}
                         </div>
                         <div className='add-pr-btn'>
-                        <Link to={-1}>  <button className='cm-btn-b'  >Back</button> </Link>
+                            <Link to={-1}>  <button className='cm-btn-b'  >Back</button> </Link>
                             <RippleButton className='cm-btn' type='submit' onClick={Addwebsite}>Next</RippleButton>
                         </div>
                     </div>
 
                 </form>
             </div>
+
+
+            {
+                ShowAlert ? <div className='pop' onClick={() => setShowAlert(false)}  >
+                    <div className='popBody'>
+                        <div className='exeMark'><h1>?</h1> </div>
+                        <p>Your project limit exceeded if you want to add more projects please Upgrade your plan  </p>
+                        <div className='cmd' style={{ justifyContent: "space-evenly" }}><button onClick={() => navigate(-1)} className='cm-btn-b'> Cancel</button><button onClick={() => navigate('/upgrade')} className='cm-btn'> upgrade</button></div>
+                    </div>
+                </div> : false
+            }
         </div>
     </>
 }

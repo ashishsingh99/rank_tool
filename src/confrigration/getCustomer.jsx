@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { customer_Subscription, customer_Subs_Email } from "../services/constants";
+import { customer_Subscription, customer_Subs_Email, get_Plans_Details } from "../services/constants";
 const GetCustomer = () => {
     const dispatch = useDispatch();
 
@@ -33,60 +33,21 @@ const GetCustomer = () => {
                         const cusPlanStatus = subcripData.data.data[0].status
                         localStorage.setItem("cusPlanStatus", cusPlanStatus)
 
-                        // individual Plan Product Id
-                        const indMonthID = { id: 'prod_NZthXMecyzOakS', project: 2, keywordLength: 150 }
-                        const indAnnualId = { id: 'prod_NZthXMecyzOakS', project: 2, keywordLength: 150 }
 
-                        // Business Plan Product Id
-                        const busMonthId = { id: 'prod_NZthXMecyzOakS', project: 5, keywordLength: 300 }
-                        const busAnnualId = { id: 'prod_NZthXMecyzOakS', project: 5, keywordLength: 300 }
-
-                        // Enterprice plan Product Id
-                        const enterMonthId = { id: 'prod_NZthXMecyzOakS', project: 10, keywordLength: 100000 }
-                        const enterAnnualId = { id: 'prod_NZthXMecyzOakS', project: 10, keywordLength: 100000 }
-
-
-                        if (cusProductId === indMonthID.id) {
-                            dispatch({ type: "USERPROJECTLIMIT", payload: indMonthID.project });
-                            dispatch({ type: "USERKEYWORDLIMIT", payload: indMonthID.keywordLength });
-
-
-                        }
-                        else if (cusProductId === indAnnualId.id) {
-                            dispatch({ type: "USERPROJECTLIMIT", payload: indAnnualId.project });
-                            dispatch({ type: "USERKEYWORDLIMIT", payload: indAnnualId.keywordLength });
-
-                        }
-                        else if (cusProductId === busMonthId.id) {
-                            dispatch({ type: "USERPROJECTLIMIT", payload: busMonthId.project });
-                            dispatch({ type: "USERKEYWORDLIMIT", payload: busMonthId.keywordLength });
-
-
-                        }
-                        else if (cusProductId === busAnnualId.id) {
-                            dispatch({ type: "USERPROJECTLIMIT", payload: busAnnualId.project });
-                            dispatch({ type: "USERKEYWORDLIMIT", payload: busAnnualId.keywordLength });
-
-                        }
-                        else if (cusProductId === enterMonthId.id) {
-                            dispatch({ type: "USERPROJECTLIMIT", payload: enterMonthId.project });
-                            dispatch({ type: "USERKEYWORDLIMIT", payload: enterMonthId.keywordLength });
-
-
-
-                        }
-                        else if (cusProductId === enterAnnualId.id) {
-                            dispatch({ type: "USERPROJECTLIMIT", payload: enterAnnualId.project });
-                            dispatch({ type: "USERKEYWORDLIMIT", payload: enterAnnualId.keywordLength });
-
-                        }
-                        else {
-                            console.log('userProduct not Matched')
-                        }
+                        axios.get(get_Plans_Details())
+                            .then((res) => {
+                                console.log('get plkan details', res.data.data)
+                                const data = res.data.data
+                                dispatch({ type: "PLANSDETAILS", payload: data });
+                                data && data.filter((res) => {
+                                    if (res.prod_id === cusProductId) {
+                                        dispatch({ type: "USERPROJECTLIMIT", payload: res.proj_len });
+                                        dispatch({ type: "USERKEYWORDLIMIT", payload: res.keyword_len });
+                                    }
+                                })
+                            })
 
                     })
-
-
             }
             else {
                 // when user not subscribe to any plan

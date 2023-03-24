@@ -11,6 +11,8 @@ const RankTable = () => {
     const UserAllKeywordResult = useSelector((state) => state.userallkeywordresult);
     const UserAllPendingResult = useSelector((state) => state.userallpendingresult);
     const oldKeywordData = useSelector((state) => state.oldkeyworddata);
+    const [KeywordMovedup, setKeywordMovedUp] = useState(0)
+    const [Keyworddown, setKeywordMovedDown] = useState(0)
     // const [oldKeywordData, setOldKeywordData] = useState(0);
 
     // localstorage Data
@@ -27,6 +29,7 @@ const RankTable = () => {
         // console.log('oldKeywordData', oldKeywordData)
         // console.log('OLDKEYWORDDATA', OLDKEYWORDDATA)
         // setOldKeywordData(OLDKEYWORDDATA);
+
 
         keywordData && keywordData.filter((res, key) => {
 
@@ -50,14 +53,19 @@ const RankTable = () => {
                 setProgressBar(obj => {
                     return [...obj, { result: oldataRankgroup - resRankgroup, growth: true }]
                 })
+                setKeywordMovedUp(KeywordMovedup + 1)
             }
             else {
                 setProgressBar(obj => {
                     return [...obj, { result: resRankgroup - oldataRankgroup, growth: false }]
                 })
+                setKeywordMovedDown(Keyworddown + 1)
+
             }
 
         })
+        localStorage.setItem('movedup', KeywordMovedup)
+        localStorage.setItem('moveddown', Keyworddown)
         console.log(' setProgressBar', progressBar)
     }, [oldKeywordData, progressBar[0]]);
 

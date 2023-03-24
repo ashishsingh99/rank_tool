@@ -11,7 +11,15 @@ export const AddCountry = () => {
     const navigate = useNavigate();
     const country = useSelector(state => state.getcountry);
     const locationcode = useRef('2356')
+    const userkeywordlimit = useSelector(state => state.userkeywordlimit)
+    const cur_Project_Keydswords_len = localStorage.getItem('cur_Project_Keydswords_len')
+
+    if (Number(cur_Project_Keydswords_len) >= userkeywordlimit) {
+        navigate('/upgrade')
+    }
     useEffect(() => {
+
+
         country.tasks && country.tasks.map((index, key) => (
             index.result && index.result.slice(0, 100).filter(obj => {
                 if (obj.location_name === countryName) {
@@ -20,6 +28,7 @@ export const AddCountry = () => {
             })
         ))
     });
+
 
     const Languages = (e) => {
         e.preventDefault();

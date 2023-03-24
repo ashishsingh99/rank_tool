@@ -4,7 +4,7 @@ import { curday, perday } from '../upDater/constant';
 const LastUpdate = () => {
     return (
         <div>
-            <div className='cmd'>
+            <div className='cmd lastUpdate'>
                 <div>
                     <select>
                         <option>

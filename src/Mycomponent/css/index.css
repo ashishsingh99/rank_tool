@@ -237,6 +237,7 @@ table tr:nth-child(even) {
     .layout_outlet {
         margin: 0 1rem;
     }
+
     .cmd-b select {
         padding: 0.4rem 0.5rem;
         max-width: 150px;
@@ -247,7 +248,23 @@ table tr:nth-child(even) {
         margin-right: 1rem;
         border-radius: 4px;
     }
-    .hm-b1-inp{
+
+    .hm-b1-inp {
+        display: none;
+    }
+
+    .hm-b2-con {
+        display: block;
+    }
+
+    .hm-b2-cl {
+        width: 100%;
+        margin: 0;
+        margin-top: 1rem;
+    }
+
+
+    .lastUpdate{
         display: none;
     }
 

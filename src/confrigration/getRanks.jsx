@@ -21,7 +21,8 @@ const GetRanks = () => {
   const CHARTRANKING = useRef([]);
   const KEYWORDDATA = useRef([]);
   const filPeNameUrl = useRef([])
-
+  const projectKeywordLength = useRef([])
+  const userEmailBasedTotalPushedData = useRef([])
   if (deviceType === null) {
     localStorage.setItem("devicetype", "desktop");
   }
@@ -58,6 +59,11 @@ const GetRanks = () => {
         // flat() is use for romove array to an array
         const projectData = projectDatalist.flat();
         // console.log('projectData', projectData)
+
+
+
+
+
 
         // window.location.reload(false)
         const ProjectDetail = projectData.filter(devtype => {
@@ -103,6 +109,52 @@ const GetRanks = () => {
             // console.log('websiteurldone')
           }
 
+          ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+          // we make new filterration for keyword limitation per plan  start
+
+
+          const userEmailBasedTotalData = projectData && projectData.filter((selectedEmail) => {
+            if (selectedEmail.email === email) {
+              return selectedEmail.email === email;
+
+            }
+          });
+
+          console.log('userEmailBasedTotalData', userEmailBasedTotalData)
+
+          userEmailBasedTotalData.map(allurlName => {
+
+            userEmailBasedTotalPushedData.current.push(allurlName.weburl)
+          })
+
+          const filtersameUrlName = Array.from(new Set(userEmailBasedTotalPushedData.current))
+          // console.log('filtersameUrlName', filtersameUrlName.length)
+          localStorage.setItem('projectlimit', filtersameUrlName.length)
+
+          const userDataFilterByProjectUrl = userEmailBasedTotalData.filter((selectedUrl) => {
+            if (selectedUrl.weburl === webURL) {
+              return selectedUrl.weburl === webURL;
+            }
+          });
+
+          userDataFilterByProjectUrl && userDataFilterByProjectUrl.map((detail) => {
+            return detail.keyword && detail.keyword.map((onlyKeyword) => {
+              // console.log('userDataFilterByProjectUrlonlyKeyword', onlyKeyword)
+              // setProjectKeywordLength((resw) => [...resw, onlyKeyword])
+              projectKeywordLength.current.push(onlyKeyword)
+              localStorage.setItem('cur_Project_Keydswords_len', projectKeywordLength.current.length)
+
+            })
+          })
+
+
+
+
+          // we make new filterration for keyword limitation per plan  start
+          ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
 
           const filteredUrlBasedData = filteredEmailList.filter((selectedUrl) => {
@@ -111,8 +163,15 @@ const GetRanks = () => {
             }
           });
 
+          if (filteredUrlBasedData.length !== 0) {
+            localStorage.setItem("IsProject", true);
+          }
+          else {
+            localStorage.setItem("IsProject", false);
 
-          localStorage.setItem("IsProject", true);
+          }
+
+
 
           filteredUrlBasedData && filteredUrlBasedData.map((detail) => {
             return (detail.keyword && detail.keyword.filter((onlyKeyword) => {

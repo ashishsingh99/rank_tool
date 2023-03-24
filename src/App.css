@@ -221,8 +221,16 @@ select:focus {
     white-space: nowrap;
 }
 
+.tb-link-lmt {
+    white-space: nowrap;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
-
+.table th,td {
+    white-space: nowrap;
+ }
 
 
 /* media query for mobile max width  */
@@ -231,5 +239,15 @@ select:focus {
         border: none;
         /* border-radius: 4px; */
         padding: 0rem;
+    }
+    .table{
+        overflow-x: auto;
+        display: block;
+    }
+    .cm-btn{
+        font-size: 12px;
+    }
+    .cm-btn-b{
+        font-size: 12px;
     }
 }

@@ -11,29 +11,30 @@ import RippleButton from '../share/components/rippleButton';
 import { curday, perday } from '../share/upDater/constant';
 import LastUpdate from '../share/components/lastUpdate';
 export const Home = () => {
-
+  const movedUP = localStorage.getItem('movedup')
+  const movedDown = localStorage.getItem('moveddown')
   // redux state Data
-  const chartRanking = useSelector(state => state.chartranking);
+  // const chartRanking = useSelector(state => state.chartranking);
 
-  // UseSate Hooks
-  const [companyRank, setCompanyRank] = useState([])
+  // // UseSate Hooks
+  // const [companyRank, setCompanyRank] = useState([])
 
-  // const Variabless
-  const rankLength = companyRank.length;
+  // // const Variabless
+  // const rankLength = companyRank.length;
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    chartRanking && chartRanking.map((AllDeatils) => {
-      AllDeatils.map((cDeatils) => {
-        setCompanyRank(obj => {
-          return [...obj, cDeatils.rank_group]
-        })
-        console.log('companyRank', companyRank)
+  //   chartRanking && chartRanking.map((AllDeatils) => {
+  //     AllDeatils.map((cDeatils) => {
+  //       setCompanyRank(obj => {
+  //         return [...obj, cDeatils.rank_group]
+  //       })
+  //       console.log('companyRank', companyRank)
 
-      })
-    })
+  //     })
+  //   })
 
-  }, [chartRanking]);
+  // }, [chartRanking]);
 
   return (
     <div>
@@ -58,15 +59,15 @@ export const Home = () => {
                   <div className='hm-bg-move'>
                     <div className='hm-ng-18'>
                       <h2>
-                        {companyRank[0] ? companyRank[0] : 0}
-
+                        {/* {companyRank[0] ? companyRank[0] : 0} */}
+                        { movedUP}
                       </h2>
                       <span>   Keywords Moved up </span>
                     </div>
                     <div className='hm-ng-18'>
                       <h2>
-                        {companyRank && companyRank[rankLength - 1] ? companyRank[rankLength - 1] : 0}
-
+                        {/* {companyRank && companyRank[rankLength - 1] ? companyRank[rankLength - 1] : 0} */}
+                        {movedDown }
                       </h2>
                       <span>   Keywords moved down </span>
                     </div>
@@ -76,7 +77,7 @@ export const Home = () => {
                     {curday('/')}  to  {perday('/')}
                   </p>
                 </div>
-                <div className='hm-b2-cl visibilty'>
+                {/* <div className='hm-b2-cl '>
                   <h5>User Visit</h5>
                   <div className='hm-bg-move'>
                     <div className='hm-ng-18'>
@@ -92,7 +93,7 @@ export const Home = () => {
                     Jan 03 , 2022 to  FEB 02, 2022
                   </p>
                 </div>
-                <div className='hm-b2-cl visibilty'>
+                <div className='hm-b2-cl '>
                   <h5>Backlinks</h5>
                   <div className='hm-bg-move'>
                     <div className='hm-ng-18'>
@@ -108,7 +109,7 @@ export const Home = () => {
                     Jan 03 , 2022 to  FEB 02, 2022
                   </p>
                 </div>
-                <div className='hm-b2-cl me-0 visibilty' >
+                <div className='hm-b2-cl ' >
                   <h5>On-Page SEO Score</h5>
                   <div className='hm-bg-move'>
                     <div className='hm-ng-18' style={{ width: '100%' }}>
@@ -125,7 +126,7 @@ export const Home = () => {
                     Jan 03 , 2022 to  FEB 02, 2022
                   </p>
 
-                </div>
+                </div> */}
               </div>
 
               {/* static data currently commited  */}
