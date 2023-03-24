@@ -90,7 +90,7 @@ DATABASES = {
             'NAME': 'seo_newest',
             'ENFORCE_SCHEMA': False,
             'CLIENT': {
-                'host': 'mongodb+srv://ashish1908:Ashish%401908@cluster0.v5edrbu.mongodb.net/?retryWrites=true&w=majority'
+                'host': 'mongodb+srv://Alekh:Rank%402022%23@eslrankspro.6ziuz.mongodb.net/?retryWrites=true&w=majority'
             }  
         }
 }
