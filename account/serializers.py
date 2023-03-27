@@ -75,9 +75,11 @@ class PlanSerializer(serializers.ModelSerializer):
   payment_link = serializers.URLField()
   name = serializers.CharField(max_length=256)
   validity = serializers.CharField(max_length=256)
+  proj_len = serializers.CharField(max_length=256)
+  keyword_len = serializers.CharField(max_length=256)
   class Meta:
     model = Plan
-    fields = ['price', 'prod_id', 'payment_link', 'name', 'validity']
+    fields = ['price', 'prod_id', 'payment_link', 'name', 'validity', 'proj_len', 'keyword_len']
 
 class PlanGetSerializer(serializers.ModelSerializer):
   class Meta:
