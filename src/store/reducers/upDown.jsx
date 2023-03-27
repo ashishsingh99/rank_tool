@@ -98,6 +98,21 @@ export const reducerFnTwenty = (state = 0, action) => {
 }
 
 
+export const reducerFnTwentyONE = (state = 0, action) => {
+    if (action.type === 'USERKEYWORDLENGTH') { return state = action.payload }
+    else { return state; }
+}
+
+
+export const reducerFnTwentyTWO = (state = 0, action) => {
+    if (action.type === 'USERPROJECTLENGTH') { return state = action.payload }
+    else { return state; }
+}
+
+
+
+
+
 
 
 

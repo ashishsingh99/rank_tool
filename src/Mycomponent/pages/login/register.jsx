@@ -48,7 +48,7 @@ const Register = () => {
 
                     }).catch((res) => {
                         setMydata(res.response.data.email);
-                        console.log('res', res)
+                        // console.log('res', res)
                     })
             }
             else {
@@ -75,7 +75,7 @@ const Register = () => {
         <div className='lg-main-div'>
             <div className='container'>
                 <div className='row'>
-                    <div className='col-6'>
+                    <div className='col-md-6 col-12 d-none d-md-block '>
                         <div className='lg-le-div'>
                             <div className='img-div-le'>
                                 <img className='lg_pg-logo' src={logo} alt='login img'>
@@ -87,7 +87,7 @@ const Register = () => {
 
                         </div>
                     </div>
-                    <div className='col-6'>
+                    <div className='col-md-6 col-12'>
                         <div className='lg-ri-div'>
                             <form>
                                 <div className='lg-ri-fm' style={{ height: '100%' }}>

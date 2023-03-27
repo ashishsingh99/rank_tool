@@ -13,12 +13,12 @@ export const AddWebsite = () => {
     const [valida, setValida] = useState('');
 
     const userProjectlimit = useSelector(state => state.userprojectlimit)
-    const USERALLPROJECTNAME = localStorage.getItem('projectlimit')
+    const USERALLPROJECTLength = useSelector(state=>state.userprojectlength)
     const [ShowAlert, setShowAlert] = useState(false)
 
     // authentication lmt for customer Project
     useEffect(() => {
-        if (USERALLPROJECTNAME >= userProjectlimit) {
+        if (USERALLPROJECTLength >= userProjectlimit) {
             setShowAlert(true)
         }
         else {

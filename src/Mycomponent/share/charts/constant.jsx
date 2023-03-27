@@ -33,7 +33,7 @@ const KeywordAllRanksChart = (props) => {
                         // console.log('deviceTypeAlloldtask', task.result)
                         return task.result && task.result.filter(result => {
                             if (result.keyword === props.Keyword) {
-                                console.log('props.keyword', props.Keyword)
+                                // console.log('props.keyword', props.Keyword)
 
                                 const PushItems = result.items.concat({ type: "organic", rank_group: "no rank", url: "not data found", domain: "not", });
 
@@ -59,8 +59,8 @@ const KeywordAllRanksChart = (props) => {
                                 });
 
                                 KeywordDetailsTime.current.push(keywordDetails);
-                                console.log('KeywordDetailsTime.current', KeywordDetailsTime.current)
-                                console.log('  TargetedKeyword_AllOldDataRanks.current', TargetedKeyword_AllOldDataRanks.current)
+                                // console.log('KeywordDetailsTime.current', KeywordDetailsTime.current)
+                                // console.log('  TargetedKeyword_AllOldDataRanks.current', TargetedKeyword_AllOldDataRanks.current)
                                 TargetedKeyword_AllOldDataRanks.current.push(filteredUrlData[0].rank_group)
 
                             }

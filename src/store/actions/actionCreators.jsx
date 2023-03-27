@@ -65,6 +65,7 @@ export const GetPreviousAlloldData = (previousallolddata) => {
 };
 
 
+// User Plans limit set here
 
 export const UserKeywordLimit = (userkeywordlimit) => {
   return { type: "USERKEYWORDLIMIT", payload: userkeywordlimit };
@@ -74,21 +75,32 @@ export const UserProjectLimit = (userprojectlimit) => {
   return { type: "USERPROJECTLIMIT", payload: userprojectlimit };
 };
 
-export const UpgradePlansDetails = (plandetails)=>{
+// user projects current length
+
+export const UserKeywordLength = (userkeywordlength) => {
+  return { type: "USERKEYWORDLENGTH", payload: userkeywordlength };
+};
+
+export const UserProjectLength = (userprojectlength) => {
+  return { type: "USERPROJECTLENGTH", payload: userprojectlength };
+};
+
+
+export const UpgradePlansDetails = (plandetails) => {
   return { type: "PLANSDETAILS", payload: plandetails };
 }
 
-export const NewProjectURL = (newprojecturl)=>{
+export const NewProjectURL = (newprojecturl) => {
   return { type: "NEWPROJECTURL", payload: newprojecturl };
 }
 
 
 
-export const RankMovedUp = (rankmovedup)=>{
+export const RankMovedUp = (rankmovedup) => {
   return { type: "RANKMOVEDUP", payload: rankmovedup };
 }
 
-export const RankMovedDown = (rankmoveddown)=>{
+export const RankMovedDown = (rankmoveddown) => {
   return { type: "RANKMOVEDDOWN", payload: rankmoveddown };
 }
 

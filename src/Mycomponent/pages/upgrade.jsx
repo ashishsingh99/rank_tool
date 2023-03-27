@@ -35,7 +35,7 @@ const Upgrade = () => {
                     return [...res, plan]
                 })
                 // console.log('plantype based details', filteredPlansShow.current)
-                console.log('plantype based details', filteredPlansShow)
+                // console.log('plantype based details', filteredPlansShow)
 
             }
         })

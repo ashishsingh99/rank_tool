@@ -24,7 +24,7 @@ const Plans = () => {
     useEffect(() => {
         axios.get(get_Plans_Details())
             .then((res) => {
-                console.log('res get', res.data.data)
+                // console.log('res get', res.data.data)
                 setPlanDetails(res.data.data)
             })
     }, [deleteAlert, ShowAlert, planId, updateAlert])

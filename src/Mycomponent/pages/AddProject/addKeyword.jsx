@@ -30,7 +30,8 @@ export const AddKeyword = () => {
     const mobile = useRef(null);
     const deviceType = useRef([]);
     const messagesEndRef = useRef(null);
-    const cur_Project_Keydswords_len = localStorage.getItem('cur_Project_Keydswords_len')
+    const UserKeywordLength = useSelector(state=>state.userkeywordlength)
+
     const NewProjectUrl = useSelector(state=>state.newprojecturl);
 
     // state manage
@@ -46,7 +47,7 @@ export const AddKeyword = () => {
     // useeffect to auto run the function
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView();
-        console.log('item', item)
+        // console.log('item', item)
     }, [item])
 
 
@@ -70,7 +71,7 @@ export const AddKeyword = () => {
         e.preventDefault();
         item.filter(filtered => {
             if (filtered === keyword) {
-                console.log('sameKeywords', filtered)
+                // console.log('sameKeywords', filtered)
                 sameKeyword.current = filtered
             }
         });
@@ -84,7 +85,7 @@ export const AddKeyword = () => {
             localStorage.removeItem('filtered')
         }
 
-        else if (item.length * deviceType.current.length + Number(cur_Project_Keydswords_len) >= Number(userKeywordlimit)) {
+        else if (item.length * deviceType.current.length + Number(UserKeywordLength) >= Number(userKeywordlimit)) {
             setItemAlert(true)
         }
 
@@ -111,7 +112,7 @@ export const AddKeyword = () => {
         else if (item.length === 0) {
             setMinLengthAlert(true)
         }
-        else if (item.length * deviceType.current.length + Number(cur_Project_Keydswords_len) > Number(userKeywordlimit)) {
+        else if (item.length * deviceType.current.length + Number(UserKeywordLength) > Number(userKeywordlimit)) {
             setItemAlert(true)
         }
         else {
@@ -154,7 +155,7 @@ export const AddKeyword = () => {
         if (desktop.current === null) {
             desktop.current = 'desktop'
             deviceType.current.push('desktop')
-            console.log(deviceType.current)
+            // console.log(deviceType.current)
             setDeviceAlert(false);
 
 
@@ -163,7 +164,7 @@ export const AddKeyword = () => {
             desktop.current = null
             const index = deviceType.current.indexOf('desktop')
             deviceType.current.splice(index, index + 1)
-            console.log(deviceType.current)
+            // console.log(deviceType.current)
         }
     }
 
@@ -171,7 +172,7 @@ export const AddKeyword = () => {
         if (mobile.current === null) {
             mobile.current = 'mobile'
             deviceType.current.push(mobile.current)
-            console.log(deviceType.current)
+            // console.log(deviceType.current)
             setDeviceAlert(false)
 
         }
@@ -179,7 +180,7 @@ export const AddKeyword = () => {
             mobile.current = null
             const index = deviceType.current.indexOf('mobile')
             deviceType.current.splice(index, index + 1)
-            console.log(deviceType.current)
+            // console.log(deviceType.current)
         }
     }
 
@@ -208,7 +209,7 @@ export const AddKeyword = () => {
                             </label>
                         </div>
                         <div>
-                            keyword :  {deviceType.current.length !== 0 ? item.length * deviceType.current.length + Number(cur_Project_Keydswords_len) : item.length + Number(cur_Project_Keydswords_len)}
+                            keyword :  {deviceType.current.length !== 0 ? item.length * deviceType.current.length + Number(UserKeywordLength) : item.length + Number(UserKeywordLength)}
                         </div>
 
                     </div>

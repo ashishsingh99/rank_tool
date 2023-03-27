@@ -55,7 +55,7 @@ const Login = () => {
             <div className='lg-main-div'>
                 <div className='container'>
                     <div className='row'>
-                        <div className='col-6'>
+                        <div className='col-12 col-md-6 d-none d-md-block '>
                             <div className='lg-le-div'>
                                 <div className='img-div-le'>
                                     <img className='lg_pg-logo' src={logo} alt='login img'>
@@ -67,7 +67,7 @@ const Login = () => {
 
                             </div>
                         </div>
-                        <div className='col-6'>
+                        <div className='col-12 col-md-6'>
                             <div className='lg-ri-div'>
                                 <form>
                                     <div className='lg-ri-fm '>

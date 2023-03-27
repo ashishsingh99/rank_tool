@@ -14,7 +14,7 @@ const GetCustomer = () => {
     };
     axios(Customerconfig)
         .then((res) => {
-            console.log('customerId', res.data.data)
+            // console.log('customerId', res.data.data)
             if (email === 'info@esearchlogix.com') {
                 // this plan for only an admin.....
                 dispatch({ type: "USERPROJECTLIMIT", payload: 100 });
@@ -41,13 +41,13 @@ const GetCustomer = () => {
 
                         axios.get(get_Plans_Details())
                             .then((res) => {
-                                console.log('get plkan details', res.data.data)
+                                // console.log('get plkan details', res.data.data)
                                 const data = res.data.data
                                 dispatch({ type: "PLANSDETAILS", payload: data });
                                 data && data.filter((res) => {
                                     if (res.prod_id === cusProductId) {
-                                        console.log('res.prod_id', res.prod_id)
-                                        console.log('cusProductId', cusProductId)
+                                        // console.log('res.prod_id', res.prod_id)
+                                        // console.log('cusProductId', cusProductId)
                                         dispatch({ type: "USERPROJECTLIMIT", payload: res.proj_len });
                                         dispatch({ type: "USERKEYWORDLIMIT", payload: res.keyword_len });
                                     }
@@ -61,8 +61,8 @@ const GetCustomer = () => {
             }
             else {
                 // when user not subscribe to any plan
-                dispatch({ type: "USERPROJECTLIMIT", payload: 1 });
-                dispatch({ type: "USERKEYWORDLIMIT", payload: 10 });
+                dispatch({ type: "USERPROJECTLIMIT", payload: 5 });
+                dispatch({ type: "USERKEYWORDLIMIT", payload: 100 });
             }
         })
 

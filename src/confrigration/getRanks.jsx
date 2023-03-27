@@ -85,7 +85,7 @@ const GetRanks = () => {
             return selectedEmail.email === email;
           }
         });
-        console.log('filteredEmailList', filteredEmailList)
+        // console.log('filteredEmailList', filteredEmailList)
 
 
         dispatch({ type: "USERALLPROJECTDETAILS", payload: filteredEmailList });
@@ -130,7 +130,9 @@ const GetRanks = () => {
 
           const filtersameUrlName = Array.from(new Set(userEmailBasedTotalPushedData.current))
           // console.log('filtersameUrlName', filtersameUrlName.length)
-          localStorage.setItem('projectlimit', filtersameUrlName.length)
+
+
+          dispatch({ type: "USERPROJECTLENGTH", payload: filtersameUrlName.length });
 
           const userDataFilterByProjectUrl = userEmailBasedTotalData.filter((selectedUrl) => {
             if (selectedUrl.weburl === webURL) {
@@ -143,8 +145,8 @@ const GetRanks = () => {
               // console.log('userDataFilterByProjectUrlonlyKeyword', onlyKeyword)
               // setProjectKeywordLength((resw) => [...resw, onlyKeyword])
               projectKeywordLength.current.push(onlyKeyword)
-              localStorage.setItem('cur_Project_Keydswords_len', projectKeywordLength.current.length)
 
+              dispatch({ type: "USERKEYWORDLENGTH", payload: projectKeywordLength.current.length });
             })
           })
 

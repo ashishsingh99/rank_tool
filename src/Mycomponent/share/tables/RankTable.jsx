@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { CSVLink } from "react-csv";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import KeywordAllRanksChart from "../charts/constant";
@@ -8,10 +9,13 @@ import RippleButton from "../components/rippleButton";
 const RankTable = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
     // Redux Data
+
     const keywordData = useSelector((state) => state.keyworddata);
     const UserAllKeywordResult = useSelector((state) => state.userallkeywordresult);
     const UserAllPendingResult = useSelector((state) => state.userallpendingresult);
+    const detailsCSV = useSelector((state) => state.userallkeywordresult);
     const oldKeywordData = useSelector((state) => state.oldkeyworddata);
     const [KeywordMovedup, setKeywordMovedUp] = useState([])
     const [Keyworddown, setKeywordMovedDown] = useState([])
@@ -78,7 +82,7 @@ const RankTable = () => {
 
         // localStorage.setItem('movedup', KeywordMovedup.length)
         // localStorage.setItem('moveddown', Keyworddown.length)
-        console.log(' setProgressBar', progressBar)
+        // console.log(' setProgressBar', progressBar)
     }, [oldKeywordData, progressBar[0]]);
 
     // useEffect(() => {
@@ -169,8 +173,11 @@ const RankTable = () => {
                             <div className="btn-hov">Mobile </div>
                         </button>
                     </div>
+                    <div className="d-flex">
+                        <div className="me-3"> <CSVLink data={detailsCSV ? detailsCSV : 'null'} > <RippleButton > CSV <i className="fa fa-solid fa-download"></i> </RippleButton> </CSVLink> </div>
+                        <RippleButton onClick={() => AddKeywordHandler()}>Add Keyword +</RippleButton>
+                    </div>
 
-                    <RippleButton onClick={() => AddKeywordHandler()}>Add Keyword +</RippleButton>
 
                 </div>
                 <table className="table" >

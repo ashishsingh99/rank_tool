@@ -19,7 +19,7 @@ const User = () => {
         axios.get(ADMIN_USERS())
             .then((res) => {
                 const data = res.data
-                console.log('adminUser', res.data)
+                // console.log('adminUser', res.data)
                 setUsers(data)
 
             });

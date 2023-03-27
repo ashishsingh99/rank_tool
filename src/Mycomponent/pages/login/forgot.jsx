@@ -77,7 +77,7 @@ const Forgot = () => {
             <div className='lg-main-div'>
                 <div className='container'>
                     <div className='row'>
-                        <div className='col-6'>
+                        <div className='col-md-6 col-12 d-none d-md-block'>
                             <div className='lg-le-div'>
                                 <div className='img-div-le'>
                                     <img className='lg_pg-logo' src={logo} alt='login img'>
@@ -89,7 +89,7 @@ const Forgot = () => {
 
                             </div>
                         </div>
-                        <div className='col-6'>
+                        <div className='col-12 col-md-6 '>
                             <div className='lg-ri-div'>
                                 <form>
                                     <div className='lg-ri-fm'>

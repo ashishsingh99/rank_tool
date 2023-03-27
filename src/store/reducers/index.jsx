@@ -16,6 +16,8 @@ import {
   reducerFnthree,
   reducerFnTwe,
   reducerFnTwenty,
+  reducerFnTwentyONE,
+  reducerFnTwentyTWO,
   reducerFntwo,
   reducerPlansdetails,
 } from "./upDown";
@@ -41,5 +43,7 @@ const RootReducer = combineReducers({
   newprojecturl: reducerFnEightteen,  // add project url reducer
   rankmovedup: reducerFnnNinteen, // rankmovedup keyword number
   rankmoveddown: reducerFnTwenty,// rankmoveddown keyword number
+  userkeywordlength:reducerFnTwentyONE , // user current used keywordlength
+  userprojectlength:reducerFnTwentyTWO, // user current used project length
 });
 export default RootReducer;

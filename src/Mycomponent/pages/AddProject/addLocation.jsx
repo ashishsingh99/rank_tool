@@ -18,24 +18,18 @@ export const AddCountry = () => {
     // Redux state
     const country = useSelector(state => state.getcountry);
     const userkeywordlimit = useSelector(state => state.userkeywordlimit)
-    const cur_Project_Keydswords_len = localStorage.getItem('cur_Project_Keydswords_len')
-    const newProjectUrl = localStorage.getItem('newprojecturl');
-    const selectedPrUrl = localStorage.getItem('websiteurl');
+    const UserKeywordLength = useSelector(state=>state.userkeywordlength)
+
 
     useEffect(() => {
 
-        if (Number(cur_Project_Keydswords_len) >= userkeywordlimit) {
+        if (Number(UserKeywordLength) >= userkeywordlimit) {
             navigate('/addpr')
         }
         if(NewProjectUrl === false){
             navigate('/')
         }
 
-        // if (newProjectUrl === null) {
-        //     localStorage.setItem('newprojecturl', selectedPrUrl)
-        // }
-
-        // console.log('newProjectUrl', newProjectUrl)
 
         country.tasks && country.tasks.map((index, key) => (
             index.result && index.result.slice(0, 100).filter(obj => {
