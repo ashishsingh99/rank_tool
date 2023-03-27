@@ -41,9 +41,14 @@ const GetCustomer = () => {
                                 dispatch({ type: "PLANSDETAILS", payload: data });
                                 data && data.filter((res) => {
                                     if (res.prod_id === cusProductId) {
+                                        console.log('res.prod_id',res.prod_id)
+                                        console.log('cusProductId',cusProductId)
                                         dispatch({ type: "USERPROJECTLIMIT", payload: res.proj_len });
                                         dispatch({ type: "USERKEYWORDLIMIT", payload: res.keyword_len });
                                     }
+                                    // else{
+                                    //     alert('not matched')
+                                    // }
                                 })
                             })
 
@@ -51,8 +56,8 @@ const GetCustomer = () => {
             }
             else {
                 // when user not subscribe to any plan
-                dispatch({ type: "USERPROJECTLIMIT", payload: 1 });
-                dispatch({ type: "USERKEYWORDLIMIT", payload: 10 });
+                dispatch({ type: "USERPROJECTLIMIT", payload: 5 });
+                dispatch({ type: "USERKEYWORDLIMIT", payload: 100 });
             }
         })
 

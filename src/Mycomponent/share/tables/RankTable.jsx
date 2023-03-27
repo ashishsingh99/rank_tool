@@ -11,8 +11,8 @@ const RankTable = () => {
     const UserAllKeywordResult = useSelector((state) => state.userallkeywordresult);
     const UserAllPendingResult = useSelector((state) => state.userallpendingresult);
     const oldKeywordData = useSelector((state) => state.oldkeyworddata);
-    const [KeywordMovedup, setKeywordMovedUp] = useState(0)
-    const [Keyworddown, setKeywordMovedDown] = useState(0)
+    const [KeywordMovedup, setKeywordMovedUp] = useState([])
+    const [Keyworddown, setKeywordMovedDown] = useState([])
     // const [oldKeywordData, setOldKeywordData] = useState(0);
 
     // localstorage Data
@@ -25,6 +25,7 @@ const RankTable = () => {
 
 
     useEffect(() => {
+        
         // console.log('keywordData', keywordData)
         // console.log('oldKeywordData', oldKeywordData)
         // console.log('OLDKEYWORDDATA', OLDKEYWORDDATA)
@@ -53,19 +54,25 @@ const RankTable = () => {
                 setProgressBar(obj => {
                     return [...obj, { result: oldataRankgroup - resRankgroup, growth: true }]
                 })
-                setKeywordMovedUp(KeywordMovedup + 1)
+
+                setKeywordMovedUp((res) => {
+                    return [...res, KeywordMovedup]
+                })
+                // alert('succeed')     
             }
             else {
                 setProgressBar(obj => {
                     return [...obj, { result: resRankgroup - oldataRankgroup, growth: false }]
                 })
-                setKeywordMovedDown(Keyworddown + 1)
+                setKeywordMovedDown((res)=>{
+                    return[...res,Keyworddown]
+                })
 
             }
 
         })
-        localStorage.setItem('movedup', KeywordMovedup)
-        localStorage.setItem('moveddown', Keyworddown)
+        localStorage.setItem('movedup', KeywordMovedup.length)
+        localStorage.setItem('moveddown', Keyworddown.length)
         console.log(' setProgressBar', progressBar)
     }, [oldKeywordData, progressBar[0]]);
 

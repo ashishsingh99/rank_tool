@@ -5,20 +5,30 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import RippleButton from '../../../Mycomponent/share/components/rippleButton'
 export const AddCountry = () => {
+    // usestate 
+    const [language, setLanguage] = useState('en')
     const [countryName, setCountryName] = useState('india');
     const [pllocation, setPllocation] = useState('Location')
-    const [language, setLanguage] = useState('en')
-    const navigate = useNavigate();
-    const country = useSelector(state => state.getcountry);
     const locationcode = useRef('2356')
+
+    // useNaviagte 
+    const navigate = useNavigate();
+
+    // Redux state 
+    const country = useSelector(state => state.getcountry);
     const userkeywordlimit = useSelector(state => state.userkeywordlimit)
     const cur_Project_Keydswords_len = localStorage.getItem('cur_Project_Keydswords_len')
-
-    if (Number(cur_Project_Keydswords_len) >= userkeywordlimit) {
-        navigate('/upgrade')
-    }
+    const newProjectUrl = localStorage.getItem('newprojecturl')
+const selectedPrUrl = localStorage.getItem('websiteurl')
     useEffect(() => {
+        if (Number(cur_Project_Keydswords_len) >= userkeywordlimit) {
+            navigate('/addpr')
+        }
+        if (newProjectUrl === null) {
+            localStorage.setItem('newprojecturl',selectedPrUrl)
+        }
 
+        console.log('newProjectUrl', newProjectUrl)
 
         country.tasks && country.tasks.map((index, key) => (
             index.result && index.result.slice(0, 100).filter(obj => {

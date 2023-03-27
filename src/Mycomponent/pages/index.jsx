@@ -11,10 +11,19 @@ import RippleButton from '../share/components/rippleButton';
 import { curday, perday } from '../share/upDater/constant';
 import LastUpdate from '../share/components/lastUpdate';
 export const Home = () => {
-  const movedUP = localStorage.getItem('movedup')
-  const movedDown = localStorage.getItem('moveddown')
+  const movedup = localStorage.getItem('movedup')
+  const moveddown = localStorage.getItem('moveddown')
+  const [movedUP, setMovedUP] = useState(0)
+  const [movedDown, setMovedDown] = useState(0)
+  const chartRanking = useSelector(state => state.chartranking);
+
+  useEffect(() => {
+    setMovedDown(moveddown)
+    setMovedUP(movedup)
+  },[0,movedUP,movedDown]);
+
+
   // redux state Data
-  // const chartRanking = useSelector(state => state.chartranking);
 
   // // UseSate Hooks
   // const [companyRank, setCompanyRank] = useState([])
@@ -60,14 +69,14 @@ export const Home = () => {
                     <div className='hm-ng-18'>
                       <h2>
                         {/* {companyRank[0] ? companyRank[0] : 0} */}
-                        { movedUP}
+                        {movedUP}
                       </h2>
                       <span>   Keywords Moved up </span>
                     </div>
                     <div className='hm-ng-18'>
                       <h2>
                         {/* {companyRank && companyRank[rankLength - 1] ? companyRank[rankLength - 1] : 0} */}
-                        {movedDown }
+                        {movedDown}
                       </h2>
                       <span>   Keywords moved down </span>
                     </div>
