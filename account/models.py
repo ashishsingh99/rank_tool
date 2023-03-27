@@ -80,3 +80,5 @@ class Plan(models.Model):
     payment_link = models.URLField()
     name = models.CharField(max_length=256)
     validity = models.CharField(max_length=256)
+    proj_len = models.CharField(max_length=128)
+    keyword_len = models.CharField(max_length=128)
