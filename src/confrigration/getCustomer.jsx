@@ -61,8 +61,8 @@ const GetCustomer = () => {
             }
             else {
                 // when user not subscribe to any plan
-                dispatch({ type: "USERPROJECTLIMIT", payload: 5 });
-                dispatch({ type: "USERKEYWORDLIMIT", payload: 100 });
+                dispatch({ type: "USERPROJECTLIMIT", payload: 1 });
+                dispatch({ type: "USERKEYWORDLIMIT", payload: 10 });
             }
         })
 
