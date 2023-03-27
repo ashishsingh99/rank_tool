@@ -78,3 +78,19 @@ export const UpgradePlansDetails = (plandetails)=>{
   return { type: "PLANSDETAILS", payload: plandetails };
 }
 
+export const NewProjectURL = (newprojecturl)=>{
+  return { type: "NEWPROJECTURL", payload: newprojecturl };
+}
+
+
+
+export const RankMovedUp = (rankmovedup)=>{
+  return { type: "RANKMOVEDUP", payload: rankmovedup };
+}
+
+export const RankMovedDown = (rankmoveddown)=>{
+  return { type: "RANKMOVEDDOWN", payload: rankmoveddown };
+}
+
+
+

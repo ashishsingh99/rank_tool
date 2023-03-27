@@ -202,7 +202,9 @@
     margin-top: -20px;
     color: red;
     font-size: 13px;
-    text-align: end;
+    text-align: end ;
+    display: flex;
+    justify-content: space-between;
 }
 
 

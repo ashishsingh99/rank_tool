@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import KeywordAllRanksChart from "../charts/constant";
 import RippleButton from "../components/rippleButton";
 
 const RankTable = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     // Redux Data
     const keywordData = useSelector((state) => state.keyworddata);
     const UserAllKeywordResult = useSelector((state) => state.userallkeywordresult);
@@ -23,9 +25,8 @@ const RankTable = () => {
     const [CurrentKeyword, setCurrentKeyword] = useState(null);
     const [progressBar, setProgressBar] = useState([]);
 
-
     useEffect(() => {
-        
+
         // console.log('keywordData', keywordData)
         // console.log('oldKeywordData', oldKeywordData)
         // console.log('OLDKEYWORDDATA', OLDKEYWORDDATA)
@@ -58,21 +59,25 @@ const RankTable = () => {
                 setKeywordMovedUp((res) => {
                     return [...res, KeywordMovedup]
                 })
-                // alert('succeed')     
+                // alert('succeed')
             }
             else {
                 setProgressBar(obj => {
                     return [...obj, { result: resRankgroup - oldataRankgroup, growth: false }]
                 })
-                setKeywordMovedDown((res)=>{
-                    return[...res,Keyworddown]
+                setKeywordMovedDown((res) => {
+                    return [...res, Keyworddown]
                 })
 
             }
 
         })
-        localStorage.setItem('movedup', KeywordMovedup.length)
-        localStorage.setItem('moveddown', Keyworddown.length)
+
+        dispatch({ type: "RANKMOVEDUP", payload: KeywordMovedup.length });
+        dispatch({ type: "RANKMOVEDDOWN", payload: Keyworddown.length });
+
+        // localStorage.setItem('movedup', KeywordMovedup.length)
+        // localStorage.setItem('moveddown', Keyworddown.length)
         console.log(' setProgressBar', progressBar)
     }, [oldKeywordData, progressBar[0]]);
 
@@ -131,6 +136,16 @@ const RankTable = () => {
         setCurrentKeyword(null)
         setKeywordAlloldDataAlert(false)
     }
+    const AddKeywordHandler = () => {
+        if (webURL === null) {
+            navigate('/addpr')
+        }
+        else {
+            dispatch({ type: "NEWPROJECTURL", payload: webURL });
+            navigate('/addpr/addcountry')
+        }
+
+    }
 
 
     return (
@@ -154,9 +169,9 @@ const RankTable = () => {
                             <div className="btn-hov">Mobile </div>
                         </button>
                     </div>
-                    <Link to={webURL ? "/addpr/addcountry" : "/addpr/addwebsite"}>
-                        <RippleButton>Add Keyword +</RippleButton>
-                    </Link>
+
+                    <RippleButton onClick={() => AddKeywordHandler()}>Add Keyword +</RippleButton>
+
                 </div>
                 <table className="table" >
                     <thead >

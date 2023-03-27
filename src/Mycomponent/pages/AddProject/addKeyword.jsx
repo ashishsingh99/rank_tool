@@ -13,7 +13,6 @@ export const AddKeyword = () => {
     const userKeywordlimit = useSelector(state => state.userkeywordlimit)
 
     // getting  local storage data
-    const websiteUrl = localStorage.getItem('newprojecturl')
     const email = localStorage.getItem('email')
     const locationcode = localStorage.getItem('locationcode')
 
@@ -32,12 +31,17 @@ export const AddKeyword = () => {
     const deviceType = useRef([]);
     const messagesEndRef = useRef(null);
     const cur_Project_Keydswords_len = localStorage.getItem('cur_Project_Keydswords_len')
-
+    const NewProjectUrl = useSelector(state=>state.newprojecturl);
 
     // state manage
     // navigator
     const navigate = useNavigate();
 
+    useEffect(()=>{
+        if(NewProjectUrl === false){
+            navigate('/')
+        }
+    })
 
     // useeffect to auto run the function
     useEffect(() => {
@@ -124,7 +128,7 @@ export const AddKeyword = () => {
                         }
                     })
                 }),
-                weburl: websiteUrl,
+                weburl: NewProjectUrl,
                 email: email
             }
             axios.post(KEYWORD_POST(), dataTwo)
@@ -134,7 +138,7 @@ export const AddKeyword = () => {
                 keyword: deviceType.current && deviceType.current.map(dataType => {
                     return {
                         email: email,
-                        weburl: websiteUrl,
+                        weburl: NewProjectUrl,
                         keyword: item,
                         deviceType: dataType
                     }

@@ -1,13 +1,13 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import RippleButton from "../../share/components/rippleButton";
 
 export const AddWebsite = () => {
     const navigate = useNavigate();
-
+    const dispatch = useDispatch();
     const [websiteURL, setWebsiteUrl] = useState('');
     const [websiteName, setWebsiteName] = useState('');
     const [valida, setValida] = useState('');
@@ -39,8 +39,12 @@ export const AddWebsite = () => {
             setValida('please provide all the details');
         }
         else {
+            // when user not subscribe to any plan
+            dispatch({ type: "NEWPROJECTURL", payload: websiteURL });
+
+
             localStorage.setItem('websitename', websiteName);
-            localStorage.setItem('newprojecturl', websiteURL)
+            // localStorage.setItem('newprojecturl', websiteURL)
             // console.log('websiteURL', websiteURL)
             // console.log('websiteName', websiteName)
             navigate('addcountry')

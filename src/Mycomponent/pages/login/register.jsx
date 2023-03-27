@@ -27,6 +27,8 @@ const Register = () => {
         if (OTP !== false) {
 
             if (OTPVail.length === 4 && Number(OTPVail) === OTP) {
+                setMydata('');
+
                 let item = {
                     email: email,
                     password: password,
@@ -37,14 +39,21 @@ const Register = () => {
                 axios.post(regester_withAPi(), item)
                     .then(res => {
                         // alert(res.data.msg)
+
                         setOTP(false)
-                        setMydata(res.data);
+                        setMydata('');
                         const mydata = res.data;
                         navigate('/login')
+                        // console.warn('res.data', res)
+
+                    }).catch((res) => {
+                        setMydata(res.response.data.email);
+                        console.log('res', res)
                     })
             }
             else {
-                alert('otp did not match')
+                // alert('otp did not match')
+                setMydata('Otp did not match');
             }
 
         }
@@ -59,7 +68,7 @@ const Register = () => {
                 })
 
         }
-         // dispatch({ type: 'NOTLOADING' })
+        // dispatch({ type: 'NOTLOADING' })
     }
 
     return (
@@ -100,6 +109,8 @@ const Register = () => {
 
                                                 <input type='number' placeholder='Enter OTP' onChange={(e) => setOtpVail(e.target.value)}  ></input>
                                                 <label id='lb'>Enter OTP</label>
+                                                <p className='vl-msd-line'>{mydata} </p>
+
                                             </div> : <div className=''>
                                                 <input type='email' placeholder='Email' onChange={(e) => setEmail(e.target.value)} ></input>
                                                 <label id='lb'>Email</label>
@@ -112,7 +123,7 @@ const Register = () => {
 
                                                 <input type='password' placeholder=' Confirm Password' onChange={(e) => setPassword2(e.target.value)} autoComplete='false'></input>
                                                 <label id='lb'>Password</label>
-                                                <p className='vl-msd-line'>{mydata.msg} </p>
+
 
                                             </div>
                                         }

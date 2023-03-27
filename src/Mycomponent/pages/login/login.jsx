@@ -85,7 +85,7 @@ const Login = () => {
 
                                         <input type='password' placeholder='Password' onChange={(e) => setPassword(e.target.value)} autoComplete='true'></input>
                                         <label id='lb'>Password</label>
-                                        <p className='vl-msd-line'> {mydata.msg ? mydata.msg : <span><Link to='/forgot'>forgot password </Link></span>} </p>
+                                        <p className='vl-msd-line'> <div>{mydata.msg }</div><div><Link to='/forgot'>forgot password </Link></div> </p>
 
                                         <div>
                                             <button type='submit' className='lg-button' onClick={login}>LOGIN</button>

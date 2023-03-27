@@ -24,26 +24,7 @@ export const perday = function (sp) {
 };
 
 export const Logout = () => {
-
-    localStorage.removeItem("loginOut");
-    localStorage.removeItem("devicetype");
-    localStorage.removeItem("utoken");
-    localStorage.removeItem("uid");
-    localStorage.removeItem("lastdate");
-    localStorage.removeItem("status");
-    localStorage.removeItem("token");
-    localStorage.removeItem("websitename");
-    localStorage.removeItem("websiteurl");
-    localStorage.removeItem("language");
-    localStorage.removeItem("IsProject");
-    localStorage.removeItem("email");
-    localStorage.removeItem("name");
-    localStorage.removeItem("location");
-    localStorage.removeItem("locationcode");
-    localStorage.removeItem("customerId");
+    localStorage.clear();
     window.location.href = '/'
     // window.location.reload(false);
-
-
-
 };

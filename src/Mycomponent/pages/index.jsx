@@ -11,39 +11,8 @@ import RippleButton from '../share/components/rippleButton';
 import { curday, perday } from '../share/upDater/constant';
 import LastUpdate from '../share/components/lastUpdate';
 export const Home = () => {
-  const movedup = localStorage.getItem('movedup')
-  const moveddown = localStorage.getItem('moveddown')
-  const [movedUP, setMovedUP] = useState(0)
-  const [movedDown, setMovedDown] = useState(0)
-  const chartRanking = useSelector(state => state.chartranking);
-
-  useEffect(() => {
-    setMovedDown(moveddown)
-    setMovedUP(movedup)
-  },[0,movedUP,movedDown]);
-
-
-  // redux state Data
-
-  // // UseSate Hooks
-  // const [companyRank, setCompanyRank] = useState([])
-
-  // // const Variabless
-  // const rankLength = companyRank.length;
-
-  // useEffect(() => {
-
-  //   chartRanking && chartRanking.map((AllDeatils) => {
-  //     AllDeatils.map((cDeatils) => {
-  //       setCompanyRank(obj => {
-  //         return [...obj, cDeatils.rank_group]
-  //       })
-  //       console.log('companyRank', companyRank)
-
-  //     })
-  //   })
-
-  // }, [chartRanking]);
+  const RankMovedup = useSelector(state=>state.rankmovedup)
+  const RankMovedDown = useSelector(state=>state.rankmoveddown)
 
   return (
     <div>
@@ -69,14 +38,14 @@ export const Home = () => {
                     <div className='hm-ng-18'>
                       <h2>
                         {/* {companyRank[0] ? companyRank[0] : 0} */}
-                        {movedUP}
+                        {RankMovedup}
                       </h2>
                       <span>   Keywords Moved up </span>
                     </div>
                     <div className='hm-ng-18'>
                       <h2>
                         {/* {companyRank && companyRank[rankLength - 1] ? companyRank[rankLength - 1] : 0} */}
-                        {movedDown}
+                        {RankMovedDown}
                       </h2>
                       <span>   Keywords moved down </span>
                     </div>

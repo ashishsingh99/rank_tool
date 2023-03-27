@@ -15,7 +15,12 @@ const GetCustomer = () => {
     axios(Customerconfig)
         .then((res) => {
             console.log('customerId', res.data.data)
-            if (res.data.data.length !== 0) {
+            if (email === 'info@esearchlogix.com') {
+                // this plan for only an admin.....
+                dispatch({ type: "USERPROJECTLIMIT", payload: 100 });
+                dispatch({ type: "USERKEYWORDLIMIT", payload: 100000 });
+            }
+            else if (res.data.data.length !== 0) {
                 const customerId = res.data.data[0].id
 
                 var SubscriptionConfig = {
@@ -41,8 +46,8 @@ const GetCustomer = () => {
                                 dispatch({ type: "PLANSDETAILS", payload: data });
                                 data && data.filter((res) => {
                                     if (res.prod_id === cusProductId) {
-                                        console.log('res.prod_id',res.prod_id)
-                                        console.log('cusProductId',cusProductId)
+                                        console.log('res.prod_id', res.prod_id)
+                                        console.log('cusProductId', cusProductId)
                                         dispatch({ type: "USERPROJECTLIMIT", payload: res.proj_len });
                                         dispatch({ type: "USERKEYWORDLIMIT", payload: res.keyword_len });
                                     }

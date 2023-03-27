@@ -237,9 +237,6 @@ const Plans = () => {
                                     <label id='lb'>Validity For </label>
 
                                 </div>
-
-
-
                             </div>
                         </div>
 

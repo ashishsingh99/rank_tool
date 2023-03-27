@@ -1,11 +1,13 @@
 import {
   reducerFnEight,
+  reducerFnEightteen,
   reducerFnEle,
   reducerFnFIV,
   reducerFnFive,
   reducerFnFor,
   reducerFnFour,
   reducerFnNine,
+  reducerFnnNinteen,
   reducerFnOne,
   reducerFnSix,
   reducerFnSixteen,
@@ -13,6 +15,7 @@ import {
   reducerFnthr,
   reducerFnthree,
   reducerFnTwe,
+  reducerFnTwenty,
   reducerFntwo,
   reducerPlansdetails,
 } from "./upDown";
@@ -35,5 +38,8 @@ const RootReducer = combineReducers({
   userkeywordlimit: reducerFntwo, // user subscribe limit of keyword
   userprojectlimit: reducerFnthr, // user subscribe limit of Project
   plansdetails: reducerPlansdetails, // upgrade plans
+  newprojecturl: reducerFnEightteen,  // add project url reducer
+  rankmovedup: reducerFnnNinteen, // rankmovedup keyword number
+  rankmoveddown: reducerFnTwenty,// rankmoveddown keyword number
 });
 export default RootReducer;

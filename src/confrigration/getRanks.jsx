@@ -121,7 +121,7 @@ const GetRanks = () => {
             }
           });
 
-          console.log('userEmailBasedTotalData', userEmailBasedTotalData)
+          // console.log('userEmailBasedTotalData', userEmailBasedTotalData)
 
           userEmailBasedTotalData.map(allurlName => {
 
@@ -151,7 +151,7 @@ const GetRanks = () => {
 
 
 
-          // we make new filterration for keyword limitation per plan  start
+          // we make new filterration for keyword limitation per plan  end
           ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 

@@ -81,6 +81,26 @@ export const reducerFnthr = (state = 0, action) => {
     else { return state; }
 }
 
+export const reducerFnEightteen = (state = false, action) => {
+    if (action.type === 'NEWPROJECTURL') { return state = action.payload }
+    else { return state; }
+}
+
+export const reducerFnnNinteen = (state = 0, action) => {
+    if (action.type === 'RANKMOVEDUP') { return state = action.payload }
+    else { return state; }
+}
+
+
+export const reducerFnTwenty = (state = 0, action) => {
+    if (action.type === 'RANKMOVEDDOWN') { return state = action.payload }
+    else { return state; }
+}
+
+
+
+
+
 
 
 
