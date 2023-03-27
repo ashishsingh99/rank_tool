@@ -204,12 +204,16 @@ class PlanUpdateView(APIView):
     plan.payment_link = request.data.get('payment_link')
     plan.name = request.data.get('name')
     plan.validity = request.data.get('validity')
+    plan.proj_len = request.data.get('proj_len')
+    plan.keyword_len = request.data.get('keyword_len')
     plan.save()
     update['price'] = plan.price
     update['prod_id'] = plan.prod_id
     update['payment_link'] = plan.payment_link
     update['name'] = plan.name
     update['validity'] = plan.validity
+    update['proj_len'] = plan.proj_len
+    update['keyword_len'] = plan.keyword_len
     serializer = PlanSerializer(data = update)
     if serializer.is_valid():
       serializer.update(plan, update)
