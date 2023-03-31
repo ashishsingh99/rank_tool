@@ -105,4 +105,9 @@ export const RankMovedDown = (rankmoveddown) => {
 }
 
 
+export const ShowMenu = (showmenu) => {
+  return { type: "SHOWMENU", payload: showmenu };
+
+}
+
 

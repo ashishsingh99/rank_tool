@@ -44,7 +44,15 @@
   z-index: 2;
 }
 
-
+/* media query for mobile max width  */
+@media (max-width: 768px) {
+  .ripple-button {
+    border-radius: 19px;
+    border: none;
+    font-size: 12px;
+    padding: 0.3rem 0.75rem;
+  }
+}
 
 /* media query for mobile max width  */
 @media (max-width: 426px) {

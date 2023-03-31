@@ -15,7 +15,7 @@ const Profile = () => {
             <div className='cmd-b'>
                 <div className='w-100 profile-det'>
                     <div className='row'>
-                        <div className='col-4'>
+                        <div className='col-md-4 col-12'>
                             <div className='cmc'>
                                 <div className='profile-img'>
                                     <img src={userImg}></img>
@@ -37,7 +37,7 @@ const Profile = () => {
 
                             </div>
                         </div>
-                        <div className='col-8'>
+                        <div className='col-md-8 col-12'>
                             <div className='cmd '>
                                 <div>
                                     <div className='cmd'>

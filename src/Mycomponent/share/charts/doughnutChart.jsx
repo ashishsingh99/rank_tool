@@ -72,28 +72,28 @@ const DoughnutChartone = () => {
     return (
         <div className='w-100'>
             <div className='row '>
-                <div className='col-6'>
+                <div className='col-md-6 col-12'>
                     <div className='row'>
-                        <div className='col-6'>
+                        <div className='col-md-6 col-6'>
                             <div className='rank-chartd m-0'>
                                 <h5> {Top3.current.length} </h5>
                                 <p>Top 3</p>
                             </div>
                         </div>
-                        <div className='col-6'>
+                        <div className='col-md-6 col-6'>
                             <div className='rank-chartd m-0'>
                                 <h5> {Top10.current.length} </h5>
                                 <p>Top 10</p>
 
                             </div>
                         </div>
-                        <div className='col-6'>
+                        <div className='col-md-6 col-6'>
                             <div className='rank-chartd'>
                                 <h5> {Top100.current.length} </h5>
                                 <p>Top 100</p>
                             </div>
                         </div>
-                        <div className='col-6'>
+                        <div className='col-md-6 col-6'>
                             <div className='rank-chartd'>
                                 <h5> {NoRank.current.length} </h5>
                                 <p>No Ranking</p>
@@ -102,7 +102,7 @@ const DoughnutChartone = () => {
 
                     </div>
                 </div>
-                <div className='col-6 '>
+                <div className='col-md-6 col-12 '>
                     <div className='cmc'>
                         <div className='dough-one' style={{ padding: '15px' }} >
                             <Doughnut data={data} options={options} />

@@ -24,7 +24,8 @@ export const AddCountry = () => {
     useEffect(() => {
 
         if (Number(UserKeywordLength) >= userkeywordlimit) {
-            navigate('/addpr')
+            navigate('/')
+            alert('you have exceeded your plan keyword limit    ')
         }
         if(NewProjectUrl === false){
             navigate('/')

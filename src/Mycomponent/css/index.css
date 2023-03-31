@@ -229,11 +229,57 @@ table tr:nth-child(even) {
 
 
 
+/* media query for mobile max width  */
+@media(max-width:1024px) {
+    .layout_outlet{
+        margin: 0 2rem;
+    }
+}
 
+/* media query for mobile max width  */
+@media (max-width: 768px) {
+
+    .layout_outlet {
+        margin: 0 1rem;
+    }
+
+    .cmd-b select {
+        padding: 0.4rem 0.5rem;
+        max-width: 150px;
+        min-width: 0px;
+        font-size: 12px;
+        font-weight: 500;
+        border: none;
+        margin-right: 1rem;
+        border-radius: 4px;
+    }
+
+    .hm-b1-inp {
+        display: flex;
+    }
+
+    .hm-b2-con {
+        display: block;
+    }
+
+    .hm-b2-cl {
+        width: 50%;
+        margin: 0;
+        margin-top: 1rem;
+    }
+
+
+    .lastUpdate {
+        display: none;
+    }
+
+}
 
 /* media query for mobile max width  */
 @media (max-width: 426px) {
-
+    .hm-b-ta {
+        margin-top: 2rem;
+    }
     .layout_outlet {
         margin: 0 1rem;
     }
@@ -264,7 +310,7 @@ table tr:nth-child(even) {
     }
 
 
-    .lastUpdate{
+    .lastUpdate {
         display: none;
     }
 

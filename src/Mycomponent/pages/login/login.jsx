@@ -42,9 +42,9 @@ const Login = () => {
                     navigate('/')
                 }
             })
-            // .then(err => {
-            //     // console.log(err);
-            // })
+        // .then(err => {
+        //     // console.log(err);
+        // })
         // dispatch({ type: 'NOTLOADING' });
     }
 
@@ -74,8 +74,8 @@ const Login = () => {
                                         <h3 className='text-center'>LOGIN</h3>
                                         <div className='lg-sn-op'>
                                             <ul>
-                                                <li> <img src={google} alt='google img'></img>continue with google</li>
-                                                <li><img src={facebook} alt='facebook img'></img>continue with facebook</li>
+                                                <li> <img src={google} alt='google img'></img><p className='m-0'>continue with google </p></li>
+                                                <li><img src={facebook} alt='facebook img'></img><p className='m-0'>continue with facebook </p></li>
                                             </ul>
                                         </div>
                                         <div className='lg-line'> </div>
@@ -85,7 +85,7 @@ const Login = () => {
 
                                         <input type='password' placeholder='Password' onChange={(e) => setPassword(e.target.value)} autoComplete='true'></input>
                                         <label id='lb'>Password</label>
-                                        <p className='vl-msd-line'> <div>{mydata.msg }</div><div><Link to='/forgot'>forgot password </Link></div> </p>
+                                        <p className='vl-msd-line'> <div>{mydata.msg}</div><div><Link to='/forgot'>forgot password </Link></div> </p>
 
                                         <div>
                                             <button type='submit' className='lg-button' onClick={login}>LOGIN</button>

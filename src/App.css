@@ -234,7 +234,7 @@ select:focus {
 
 
 /* media query for mobile max width  */
-@media (max-width: 426px) {
+@media (max-width: 768px) {
     .cmd-b {
         border: none;
         /* border-radius: 4px; */
@@ -249,5 +249,32 @@ select:focus {
     }
     .cm-btn-b{
         font-size: 12px;
+    }
+}
+
+/* media query for mobile max width  */
+@media (max-width: 426px) {
+    .cmd-b {
+        border: none;
+        /* border-radius: 4px; */
+        padding: 0rem;
+        margin-top: 1rem;
+    }
+    .table{
+        overflow-x: auto;
+        display: block;
+    }
+    .cm-btn{
+        font-size: 12px;
+    }
+    .cm-btn-b{
+        font-size: 12px;
+    }
+    .popBody{
+        min-width: 95vw;
+    }
+    .pop{
+        align-items: center;
+        height: 90vh;
     }
 }

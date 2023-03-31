@@ -2,14 +2,18 @@ import React from 'react'
 import '../css/topbar.css'
 import userImg from "../../Mycomponent/Assets/seoimg/userImg.jpg";
 import { Logout } from '../../Mycomponent/share/upDater/constant';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
 const TopBar = () => {
+    const dispatch = useDispatch();
     return (
-        <div className='Top-bar'>
-            <div className='cmd'>
+        <>
+            <div className='Top-bar'>
+                <div className='cmd'>
 
-                <div id='adminSearch' className='admin_search me-5'><i className='fa-solid fa-search'> </i><input type='search' id='adsearch' placeholder='search something here . . .' /></div>
-
-                <div>
+                    <div className='top-bar_menu' onClick={() => dispatch({ type: "SHOWMENU", payload: true })} ><i className='fa fa-solid fa-bars'></i></div>
+                    <div id='adminSearch' className='admin_search'><div><i className='fa-solid fa-search'> </i></div><div className=''><input type='search' id='adsearch' placeholder='search something here . . .' /></div></div>
 
                     <div className='admin_NameBar'>
 
@@ -27,10 +31,12 @@ const TopBar = () => {
                         </div>
                     </div>
 
+
                 </div>
 
             </div>
-        </div>
+
+        </>
     )
 }
 

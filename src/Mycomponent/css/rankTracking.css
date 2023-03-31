@@ -130,3 +130,23 @@
     margin-left: 0.5rem;
     margin-right: 0.3rem;
 }
+
+
+
+/* media query for mobile max width  */
+@media (max-width: 426px) {
+    .se-vol {
+        margin-left: 0rem;
+        margin-right: 0rem;
+        margin-top: 0rem;
+        display: flex;
+        justify-content: space-between;
+    }
+    .rank-se{
+        display: none;
+    }
+    .sel-cus-date select{
+        min-width: 0px;
+        max-width: 60px;
+    }
+}

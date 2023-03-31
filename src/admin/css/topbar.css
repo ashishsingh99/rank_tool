@@ -41,7 +41,7 @@
 }
 
 .adminName_drop ul li:hover {
- background: #dcdcdc;
+    background: #dcdcdc;
 }
 
 
@@ -65,7 +65,11 @@
 .admin_search {
     border-radius: 4px;
     border: 1.5px solid #dcdcdc;
-
+    display: flex;
+    align-items: center;
+    max-width: 300px;
+    min-width: 300px;
+    margin-right: 1rem;
 }
 
 .admin_search svg {
@@ -75,7 +79,6 @@
 
 .admin_search input {
     padding: 0.5rem;
-    width: 300px;
     border: none;
     border-radius: 4px;
 }
@@ -88,4 +91,40 @@
 #adminSearch:focus-within svg {
     color: #fff !important;
     transform: scale(1.1);
+}
+
+.top-bar_menu {
+    display: none;
+}
+
+/* media query for mobile max width  */
+@media (max-width: 426px) {
+    .admin_search {
+        max-width: 300px;
+        min-width: 0;
+        margin-right: 0;
+    }
+
+    .admin_NameBar{
+        display: none;
+
+    }
+
+    .Top-bar {
+        position: sticky;
+        display: grid;
+        padding: 0.5rem 1rem;
+        box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+    }
+
+    .top-bar_menu {
+        display: block;
+        padding-right: 0.5rem;
+    }
+    .top-bar_menu svg{
+        font-size: 25px;
+    }
+
+
+
 }

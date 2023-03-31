@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 
 const Keyword = () => {
     const allprojectdata = useSelector((state) => state.allprojectdata);
-    const allprojectdetails = useSelector((state) => state.allprojectdetails)
 
     return (
         <div>

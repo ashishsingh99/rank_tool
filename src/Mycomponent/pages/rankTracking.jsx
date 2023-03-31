@@ -61,7 +61,7 @@ const RankTracking = () => {
               <div>
                 <div className='row'>
                   {/* <div className='col-6'> <LineChart /></div> */}
-                  <div className='col-6'><AverageChart /></div>
+                  <div className='col-md-6 col-12'><AverageChart /></div>
                 </div>
               </div>
 

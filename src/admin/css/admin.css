@@ -56,3 +56,19 @@
     margin-bottom: 1rem;
 
 }
+
+
+/* media query for mobile max width  */
+@media (max-width: 426px) {
+    .table_title{
+        /* font-size:20px; */
+    }
+
+    .admin-ground {
+        margin: 0;
+        border-radius: 0;
+        height: auto;
+        box-shadow: none;
+    }
+
+}

@@ -69,3 +69,21 @@
     z-index: -1;
 }
 
+
+
+/* media query for mobile max width  */
+@media (max-width: 426px) {
+    .profile-img img{
+        border-radius: 50%;
+        height: 80% !important;
+        width: 60% !important;
+    }
+    .profile-img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .profile-det{
+        margin-bottom: 2rem;
+    }
+  }

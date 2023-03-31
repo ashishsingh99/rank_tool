@@ -9,7 +9,7 @@
 .add-pr-url input {
     /* width: 100%; */
     margin-top: 1rem;
-    width: 450px;
+    max-width: 450px;
 }
 
 .add-pr-btn {
@@ -26,7 +26,8 @@
     margin: 0;
     padding: 0;
     display: flex;
-    width: 450px;
+    max-width: 450px;
+    min-width: 450px;
     background-color: #fff;
     flex-wrap: wrap;
     padding: 1rem;
@@ -109,4 +110,14 @@ width: 280px !important;
 }
 .dev-btn input{
     margin-right: 0.3rem;
+}
+
+
+
+/* media query for mobile max width  */
+@media (max-width: 426px) {
+    .key-fm-ul {
+        min-width: 0;
+        max-width: 90vw;
+    }
 }

@@ -111,6 +111,13 @@ export const reducerFnTwentyTWO = (state = 0, action) => {
 
 
 
+export const reducerShowMenu = (state = false, action) => {
+    if (action.type === 'SHOWMENU') { return state = action.payload }
+    else { return state; }
+}
+
+
+
 
 
 

@@ -41,7 +41,7 @@ const RankTable = () => {
 
             const resRankgroup = res.rank_group
             // console.log('res.RANKGROUP', resRankgroup)
-            const oldataRankgroup = oldKeywordData && oldKeywordData[key].rank_group
+            const oldataRankgroup = oldKeywordData[key] && oldKeywordData[key].rank_group
             // console.log('oldataRankgroup', oldataRankgroup)
             if (resRankgroup === 'no rank') {
                 // alert('nannn')
